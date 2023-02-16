@@ -10,14 +10,9 @@ Search for and replace the following placeholders within this file:
 
 | Placeholder | Example |
 | --- | --- |
-| `#ACQUIA_CLOUD_URL` | https://cloud.acquia.com/app/develop/applications/12345678-1234-1234-12345678901234567 |
 | `#GIT_PRIMARY_DEV_BRANCH` | `master` or `develop` |
 | `#GITHUB_ORG` | The "org" in https://github.com/org/project |
 | `#GITHUB_PROJECT` | The "project" in https://github.com/org/project |
-| `#JIRA_URL` | https://org.atlassian.net/projects/PROJ |
-| `#LOCAL_DEV_SITE_ALIAS` | `@example.local` |
-| `#LOCAL_DEV_URL` | http://local.example.com/ |
-| `#TRAVIS_URL` | https://travis-ci.com/org/PROJ |
 
 # Getting Started
 
@@ -39,19 +34,9 @@ This project is based on best practices.
 
 # Setup Local Environment.
 
-1. Install Composer dependencies.
-After you have forked, cloned the project and setup...
-2. Setup VM.
+1. Install an IDE (Visual Studio).
+2. After you have forked, cloned the project and setup...
 
-
-## Other Local Setup Steps
-
-1. Set up frontend build and theme.
-By default BLT sets up a site with the lightning profile and a cog base theme. You can choose your own profile before setup in the blt.yml file. If you do choose to use cog, see [Cog's documentation](https://github.com/acquia-pso/cog/blob/8.x-1.x/STARTERKIT/README.md#create-cog-sub-theme) for installation.
-See [BLT's Frontend docs](https://blt.readthedocs.io/en/latest/frontend/) to see how to automate the theme requirements and frontend tests.
-After the initial theme setup you can configure `blt/blt.yml` to install and configure your frontend dependencies with `blt setup`.
-
----
 
 # Resources 
 
