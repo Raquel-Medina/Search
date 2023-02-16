@@ -1,0 +1,383 @@
+﻿@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+.opensans {
+    font-family: "Open Sans", sans-serif;
+}
+
+/* || GENERAL STYLES */
+body {
+    margin: 0;
+    padding: 0;
+    color: #454545;
+    font-size: 0.875rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #2f4a58;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+    a h6:hover {
+        color: #447c7c;
+        text-decoration: underline;
+    }
+
+a, a:visited {
+    color: #454545;
+    font-size: 0.875rem;
+    text-decoration: underline;
+}
+
+    a:hover {
+        color: #447c7c;
+        font-size: 0.875rem;
+        text-decoration: underline;
+    }
+
+/* ======================================================== */
+
+
+/* || PAGE Styles */
+.search-page {
+    padding: 80px 0px 80px 0px;
+}
+
+.details-page {
+    padding: 40px 0px 80px 0px;
+}
+
+/* ======================================================== */
+
+
+/* || HEADER Styles */
+.header-banner {
+    color: #2f4a58;
+    text-align: center;
+}
+
+.header-image {
+    max-width: 50%;
+}
+
+h2.header-title {
+    font-size: 2.5vw;
+    letter-spacing: 5px;
+}
+
+h3.header-title {
+    font-size: 1.75vw;
+    letter-spacing: 3px;
+}
+
+h4.header-title {
+    font-size: 1.5vw;
+    letter-spacing: 3px;
+}
+
+h5.header-title {
+    font-size: 1.25rem;
+    letter-spacing: 1.5px;
+}
+
+h6.header-title {
+    font-size: 1vw;
+    letter-spacing: 0.75px;
+}
+
+hr.header-title {
+    width: 7rem;
+    height: 0.1vw;
+    background-color: #d29040;
+    margin: 4% auto 1rem auto;
+    opacity: 1;
+    border: 0;
+    border-top: 1px solid #d29040;
+}
+
+.header-buttons {
+    padding: 30px 20px 20px 20px;
+    background-color: #FFF;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* ======================================================== */
+
+
+/* || Disclaimer Styles */
+.disclaimer {
+    color: #997404;
+    background-color: #fff8e1;
+    border-color: #fff8e1;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 10px;
+}
+
+.disclaimer p {
+    font-size: 0.875rem;
+    font-weight: normal;
+}
+/* ======================================================== */
+
+
+/* || BUTTON Styles */
+.button-primary {
+    background-color: #2f4a58;
+    color: #fff;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    text-transform: uppercase;
+    padding: 5px 25px;
+}
+
+    .button-primary:hover, .button-primary:focus, .button-primary:active {
+        color: #fff;
+        text-decoration: underline;
+        padding: 5px 40px;
+        transition: 0.6s;
+        box-shadow:  0px 20px 30px rgba(0, 0, 0, 0.35);
+    }
+
+/* ======================================================== */
+
+
+/* || TABLE AND GRIDVIEW Styles */
+.table-condensed .grid-header {
+    background-color: white;
+}
+
+.table-condensed, .table-condensed td, .table-condensed tr th {
+    border: 0px;
+}
+
+.table-condensed tr {
+    background: #e5e5e5;
+    border: 0px solid white;
+    border-width: 12px 0;
+}
+
+.table-condensed tr td a {
+    text-decoration: none;
+}
+
+.table-plain {
+    background-color: white;
+    border: 0px solid white;
+}
+
+/* Gridview Pager */
+.grid-pager td {
+    background-color: white;
+    border: 0px;
+}
+
+.grid-pager table tr td span {
+    background-color: #447c7c;
+    color: white;
+    padding: 5px 12px;
+}
+/* ======================================================== */
+
+
+/* || FORM Styles */
+/* Form textbox font-size */
+.form-control {
+    font-size: .75rem
+}
+
+/* ======================================================== */
+
+
+/* || DETAILS PAGE Styles */
+.details-section {
+    background-color: #fafafa;
+    padding: 1.5em;
+    box-shadow: rgba(0,0,0,.16) 0 3px 6px;
+}
+
+.details-section-title {
+    color: #fff;
+    border-radius: 5px;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    background-color: #2f4a58;
+    padding: 10px;
+    box-shadow: rgba(0,0,0,.16) 0 3px 6px;
+}
+
+.details-title {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* ======================================================== */
+
+
+/* || Assessor Details top page links */
+.compare-parcel a {
+    background: url('../images/link.png') no-repeat;
+    background-size: 15px;
+    padding-left: 24px;
+    font-weight: bold;
+}
+    .compare-parcel a:hover {
+        background: url('../images/link-hover.png') no-repeat;
+        background-size: 15px;
+        padding-left: 24px;
+        font-weight: bold;
+    }
+
+.tax-information a {
+    background: url('../images/search-plus.png') no-repeat;
+    background-size: 15px;
+    padding-left: 24px;
+    font-weight: bold;
+}
+    .tax-information a:hover {
+        background: url('../images/search-plus-hover.png') no-repeat;
+        background-size: 15px;
+        padding-left: 24px;
+        font-weight: bold;
+    }
+
+.assessor-parcel-viewer a {
+    background: url('../images/location.png') no-repeat;
+    background-size: 15px;
+    padding-left: 24px;
+    font-weight: bold;
+}
+    .assessor-parcel-viewer a:hover {
+        background: url('../images/location-hover.png') no-repeat;
+        background-size: 15px;
+        padding-left: 24px;
+        font-weight: bold;
+    }
+
+.tax-chart a {
+    background: url('../images/pdf-file.png') no-repeat;
+    background-size: 15px;
+    padding-left: 24px;
+    font-weight: bold;
+}
+    .tax-chart a:hover {
+        background: url('../images/pdf-file-hover.png') no-repeat;
+        background-size: 15px;
+        padding-left: 24px;
+        font-weight: bold;
+    }
+
+.prop-address a {
+    background: url('../images/prop-address.png') no-repeat;
+    background-size: 18px;
+    padding-left: 24px;
+    font-weight: bold;
+}
+    .prop-address a:hover {
+        background: url('../images/prop-address-hover.png') no-repeat;
+        background-size: 18px;
+        padding-left: 24px;
+        font-weight: bold;
+    }
+
+.share-parcel a {
+    background: url('../images/share.png') no-repeat;
+    background-size: 14px;
+    padding-left: 24px;
+    font-weight: bold;
+    background-position: 0 center;
+}
+    .share-parcel a:hover {
+        background: url('../images/share-hover.png') no-repeat;
+        background-size: 14px;
+        padding-left: 24px;
+        font-weight: bold;
+        background-position: 0 center;
+    }
+
+.print-details a {
+    background: url('../images/print.png') no-repeat;
+    background-size: 18px;
+    padding-left: 24px;
+    font-weight: bold;
+    background-position: 0 center;
+}
+    .print-details a:hover {
+        background: url('../images/print-hover.png') no-repeat;
+        background-size: 18px;
+        padding-left: 24px;
+        font-weight: bold;
+        background-position: 0 center;
+    }
+
+.icon-info-sign {
+    background: url('../images/info.png') no-repeat;
+    background-size: 14px;
+    padding-left: 20px;
+    margin-right: 5px;
+    background-position: top right;
+    border: 0px;
+}
+
+/* ======================================================== */
+
+
+/* || MOBILE VIEW Styles */
+@media only screen and (max-width: 400px) {
+    .search-page {
+        padding-top: 30px;
+    }
+
+    .details-page {
+        padding-top: 30px;
+    }
+
+    /* || HEADER Styles */
+    .header-image {
+        max-width: 60%;
+    }
+
+    h2.header-title {
+        font-size: 3vw;
+        letter-spacing: 3.5px;
+    }
+
+    h3.header-title {
+        font-size: 2.85vw;
+        letter-spacing: 2.85px;
+    }
+
+    h4.header-title {
+        font-size: 2.75vw;
+        letter-spacing: 3px;
+    }
+
+    h5.header-title {
+        font-size: 1rem;
+        letter-spacing: 1.75px;
+    }
+
+    h6.header-title {
+        font-size: 1.75vw;
+        letter-spacing: 0.5px;
+    }
+
+    hr.header-title {
+        width: 3rem;
+        height: 0.1vw;
+        background-color: #d29040;
+        margin: 4% auto 1rem auto;
+        opacity: 1;
+        border: 0;
+        border-top: 1px solid #d29040;
+    }
+
+    .button-responsive {
+        font-size: 4vw;
+    }
+}
+/* ======================================================== */
