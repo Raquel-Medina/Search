@@ -38,11 +38,6 @@ This project is based on best practices.
 2. After you have forked, cloned the project and setup...
 
 
-# Resources 
-
-Additional 
-
-
 ## Resources
 
 * GitHub - https://github.com/#GITHUB_ORG/#GITHUB_PROJECT
