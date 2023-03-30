@@ -97,6 +97,7 @@ namespace Search
                 string propAddress = drDetails["p_stnm"].ToString() + " " + drDetails["p_dir"] + " " + drDetails["p_stna"] + " " + drDetails["p_sfx"] + " " + drDetails["p_city"].ToString() + ", " + drDetails["p_stat"].ToString() + " " + drDetails["p_zipc"].ToString();
                 string owner2 = drDetails["owner_na2"].ToString();
                 string careOf = drDetails["care_of"].ToString();
+                string sub = drDetails["sub_div"].ToString();
                 string unit = drDetails["unit"].ToString();
                 string block = drDetails["BLOCK"].ToString();
                 string lot = drDetails["lot"].ToString();
@@ -140,8 +141,13 @@ namespace Search
                 else { lblPropAddress.Text = ""; }
 
                 ttPropAddress.Title = "Property Address refers to a geographical location: it may not match the mailing address city or zip code.";
-                lblSubdivision.Text = drDetails["sub_div"].ToString();
 
+                if (sub != "")
+                {
+                    lblSubdivision.Text = sub;
+                }
+                else { lblSubdivision.Text = "N/A"; }
+                
                 if (unit != "")
                 {
                     lblUnit.Text = unit;
