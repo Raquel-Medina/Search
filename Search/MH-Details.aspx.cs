@@ -60,7 +60,7 @@ namespace Search
                 // PROPERTY ADDRESS LOCATION
                 hlAddressLocation.NavigateUrl = "https://www.google.com/maps?q=" + propAddress;
                 // TAX YEAR CHART
-                hlTaxChart.NavigateUrl = "http://www.pinal.gov/DocumentCenter/View/8770/VALYRCHART";
+                hlTaxChart.NavigateUrl = "https://www.pinal.gov/DocumentCenter/View/11053/VALYRCHART";
                 // SHARE THIS
                 hfCopy.Value = assessorParcelLink;  // link for Share this parcel
 
