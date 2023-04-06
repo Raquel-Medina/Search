@@ -15,6 +15,15 @@ namespace Search
     {
 
         /// <summary>
+        /// pnlOwner control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlOwner;
+
+        /// <summary>
         /// txtOwner control.
         /// </summary>
         /// <remarks>
@@ -49,6 +58,15 @@ namespace Search
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvSearchName;
+
+        /// <summary>
+        /// pnlAddress control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlAddress;
 
         /// <summary>
         /// txtNumber control.
@@ -114,6 +132,15 @@ namespace Search
         protected global::System.Web.UI.WebControls.GridView gvSearchAddress;
 
         /// <summary>
+        /// pnlParcel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlParcel;
+
+        /// <summary>
         /// txtBook control.
         /// </summary>
         /// <remarks>
@@ -175,6 +202,15 @@ namespace Search
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvSearchParcel;
+
+        /// <summary>
+        /// pnlSubdivision control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlSubdivision;
 
         /// <summary>
         /// txtSubdivision control.

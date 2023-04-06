@@ -39,6 +39,7 @@
                 <!-- start of form search by OWNER code -->
                 <div class="search-form mt-4">
                     <h5 class="header-title">OWNERS NAME</h5>
+                    <asp:Panel ID="pnlOwner" DefaultButton="btnSearchOwner" runat="server">
                     <div class="row">
                         <div class="col-10">
                             <asp:TextBox ID="txtOwner" CssClass="form-control" placeholder="LAST/FIRST NAME" runat="server" />
@@ -47,6 +48,7 @@
                             <asp:Button ID="btnSearchOwner" Text="Search" CssClass="btn button-primary button-responsive" OnClick="btn_Click" runat="server" />
                         </div>
                     </div>
+                    </asp:Panel>
                     <div class="row">
                         <div class="col-10">
                             <asp:Label ID="lblSearchOwnerWarning" CssClass="alert-light" runat="server"></asp:Label>
@@ -68,6 +70,7 @@
                 <!-- start of search by ADDRESS code -->
                 <div class="search-form mt-4">
                     <h5 class="header-title">PROPERTY ADDRESS</h5>
+                    <asp:Panel ID="pnlAddress" DefaultButton="btnSearchAddress" runat="server">
                     <div class="row">
                         <div class="col-2">
                             <asp:TextBox ID="txtNumber" CssClass="form-control" placeholder="STREET NUMBER" runat="server" />
@@ -110,6 +113,7 @@
                             <asp:Button ID="btnSearchAddress" Text="Search" CssClass="btn button-primary button-responsive" OnClick="btn_Click" runat="server" />
                         </div>
                     </div>
+                    </asp:Panel>
                     <div class="row">
                         <div class="col-10">
                             <asp:Label ID="lblSearchAddressWarning" CssClass="alert-light" runat="server" Text="All fields are mandatory"></asp:Label>
@@ -131,6 +135,7 @@
                 <!-- start of form search by PARCEL NUMBER code -->
                 <div class="search-form mt-4">
                     <h5 class="header-title">PARCEL NUMBER</h5>
+                    <asp:Panel ID="pnlParcel" DefaultButton="btnSearchParcel" runat="server">
                     <div class="row">
                         <div class="col-3">
                             <asp:TextBox ID="txtBook" CssClass="form-control" placeholder="BOOK" runat="server" />
@@ -177,6 +182,7 @@
                             <asp:Button ID="btnSearchParcel" Text="Search" CssClass="btn button-primary button-responsive" OnClick="btn_Click" runat="server" />
                         </div>
                     </div>
+                    </asp:Panel>
                     <div class="row">
                         <div class="col-10">
                             <asp:Label ID="lblSearchParcelWarning" CssClass="alert-light" runat="server" Text="All fields are mandatory"></asp:Label>
@@ -198,6 +204,7 @@
                 <!-- start of form search by SUBDIVISION code -->
                 <div class="search-form mt-4">
                     <h5 class="header-title">SUBDIVISION NAME</h5>
+                    <asp:Panel ID="pnlSubdivision" DefaultButton="btnSearchSubdivision" runat="server">
                     <div class="row">
                         <div class="col-10">
                             <asp:TextBox ID="txtSubdivision" CssClass="form-control" placeholder="SUBDIVISION NAME" runat="server" />
@@ -206,9 +213,10 @@
                             <asp:Button ID="btnSearchSubdivision" Text="Search" CssClass="btn button-primary button-responsive" OnClick="btn_Click" runat="server" />
                         </div>
                     </div>
+                    </asp:Panel>
                     <div class="row">
                         <div class="col-10">
-                            <asp:Label ID="lblSearchSubdivisionWarning" CssClass="alert-light" runat="server" Text="Subdivision is mandatory"></asp:Label>
+                                <asp:Label ID="lblSearchSubdivisionWarning" CssClass="alert-light" runat="server" Text="Subdivision is mandatory"></asp:Label>
                             <asp:GridView ID="gvSearchSubdivision" CssClass="table table-condensed" AutoGenerateColumns="false" AllowPaging="true" OnPageIndexChanging="gv_PageIndexChanging" OnRowDataBound="gv_RowDataBound" runat="server">
                                 <Columns>
                                     <asp:HyperLinkField HeaderText="PARCEL NUMBER" DataNavigateUrlFields="parcel_id" DataNavigateUrlFormatString="Parcel-Details.aspx?parcel_id={0}" DataTextField="parcel_id" />
