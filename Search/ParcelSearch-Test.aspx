@@ -24,6 +24,18 @@
         gtag('js', new Date());
         gtag('config', 'G-7Q6NTBLCK0');
     </script>
+
+    <!-- Parcel textbox auto tab -->
+    <script type="text/javascript">
+        function moveFocus(fromTextBox, toTextBox) {
+            var length = fromTextBox.value.length;
+            var maxLength = fromTextBox.getAttribute("maxLength");
+
+            if (length == maxLength) {
+                document.getElementById(toTextBox).focus();
+            }
+        }
+    </script>
 </head>
 
 <body>
@@ -138,13 +150,13 @@
                     <asp:Panel ID="pnlParcel" DefaultButton="btnSearchParcel" runat="server">
                     <div class="row">
                         <div class="col-3">
-                            <asp:TextBox ID="txtBook" CssClass="form-control" placeholder="BOOK" runat="server" />
+                            <asp:TextBox ID="txtBook" CssClass="form-control" placeholder="BOOK" MaxLength="3" onkeyup="moveFocus(this, 'txtMap')" runat="server" />
                         </div>
                         <div class="col-2">
-                            <asp:TextBox ID="txtMap" CssClass="form-control" placeholder="MAP" runat="server" />
+                            <asp:TextBox ID="txtMap" CssClass="form-control" placeholder="MAP" MaxLength="2" onkeyup="moveFocus(this, 'txtParcel')" runat="server" />
                         </div>
                         <div class="col-3">
-                            <asp:TextBox ID="txtParcel" CssClass="form-control" placeholder="PARCEL" runat="server" />
+                            <asp:TextBox ID="txtParcel" CssClass="form-control" placeholder="PARCEL" MaxLength="3" onkeyup="moveFocus(this, 'ddlSplit')" runat="server" />
                         </div>
                         <div class="col-2">
                             <asp:DropDownList ID="ddlSplit" CssClass="form-control" runat="server">
