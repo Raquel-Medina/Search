@@ -106,6 +106,7 @@
   <ItemGroup>
     <Content Include="css\print.css" />
     <Content Include="css\site.css" />
+    <Content Include="ErrorPages\Oops.aspx" />
     <Content Include="FoodInspection-Details.aspx" />
     <Content Include="FoodInspection-Search.aspx" />
     <Content Include="Home.aspx" />
@@ -153,6 +154,13 @@
     <Content Include="WebForm2.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ErrorPages\Oops.aspx.cs">
+      <DependentUpon>Oops.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ErrorPages\Oops.aspx.designer.cs">
+      <DependentUpon>Oops.aspx</DependentUpon>
+    </Compile>
     <Compile Include="FoodInspection-Details.aspx.cs">
       <DependentUpon>FoodInspection-Details.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
