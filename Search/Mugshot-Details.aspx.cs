@@ -35,71 +35,74 @@ namespace Search
 
             // *** Stored Procedure *** //
             string detailsProcedure = "[dbo].[spGetInmateDetails]";
-            SqlConnection con = new SqlConnection(connectionString);
-            con.Open();
-            SqlCommand cmd = new SqlCommand(detailsProcedure, con);
-            SqlDataReader dr;
-
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Add("@InmateID", SqlDbType.VarChar).Value = id;
-
-            dr = cmd.ExecuteReader();
-            while (dr.Read())
+            using (SqlConnection con = new SqlConnection(connectionString))
             {
-                // *** Inmate Details *** //
-                imgInmate.ImageUrl = "https://app1.pinal.gov/Files/MugShots/" + subFolder + "/" + id + ".jpg";
-                lblInmateID.Text = dr["InmateID"].ToString();
-                lblName.Text = dr["Name"].ToString();
-                lblAge.Text = dr["Age"].ToString();
-                lblRace.Text = dr["Race"].ToString();
-                lblSex.Text = dr["Sex"].ToString();
-                lblHair.Text = dr["Hair"].ToString();
-                lblEyes.Text = dr["Eyes"].ToString();
-                int weight = int.Parse(dr["Weight"].ToString());
-                if (weight > 0)
-                {
-                    lblWeight.Text = weight.ToString();
-                }
-                else { lblWeight.Text = ""; }
-                string height = dr["Height"].ToString();
-                if (height.Contains("  "))
-                {
-                    lblHeight.Text = "";
-                }
-                else { lblHeight.Text = height.ToString(); }
+                con.Open();
+                SqlCommand cmd = new SqlCommand(detailsProcedure, con);
+                SqlDataReader dr;
 
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@InmateID", SqlDbType.VarChar).Value = id;
+
+                dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    // *** Inmate Details *** //
+                    imgInmate.ImageUrl = "https://app1.pinal.gov/Files/MugShots/" + subFolder + "/" + id + ".jpg";
+                    lblInmateID.Text = dr["InmateID"].ToString();
+                    lblName.Text = dr["Name"].ToString();
+                    lblAge.Text = dr["Age"].ToString();
+                    lblRace.Text = dr["Race"].ToString();
+                    lblSex.Text = dr["Sex"].ToString();
+                    lblHair.Text = dr["Hair"].ToString();
+                    lblEyes.Text = dr["Eyes"].ToString();
+                    int weight = int.Parse(dr["Weight"].ToString());
+                    if (weight > 0)
+                    {
+                        lblWeight.Text = weight.ToString();
+                    }
+                    else { lblWeight.Text = ""; }
+                    string height = dr["Height"].ToString();
+                    if (height.Contains("  "))
+                    {
+                        lblHeight.Text = "";
+                    }
+                    else { lblHeight.Text = height.ToString(); }
+
+                }
+
+                dr.Close();
             }
-            dr.Close();
-            con.Close();
         }
 
         private void GetOffenses(string id)
         {
-            SqlConnection con = new SqlConnection(connectionString);
-            con.Open();
-            SqlCommand cmd = new SqlCommand("spGetBookingInfo", con);
-
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Add("@InmateID", SqlDbType.VarChar).Value = id;
-
-            DataTable dt = new DataTable();
-
-            SqlDataReader dr;
-            dr = cmd.ExecuteReader();
-            dt.Columns.Add(" ", typeof(System.String));
-
-            while (dr.Read())
+            using (SqlConnection con = new SqlConnection(connectionString))
             {
-                string offense = dr["statutedesc"].ToString();
+                con.Open();
+                SqlCommand cmd = new SqlCommand("spGetBookingInfo", con);
 
-                dt.Rows.Add(offense);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@InmateID", SqlDbType.VarChar).Value = id;
+
+                DataTable dt = new DataTable();
+
+                SqlDataReader dr;
+                dr = cmd.ExecuteReader();
+                dt.Columns.Add(" ", typeof(System.String));
+
+                while (dr.Read())
+                {
+                    string offense = dr["statutedesc"].ToString();
+
+                    dt.Rows.Add(offense);
+                }
+
+                gvOffenses.DataSource = dt;
+                gvOffenses.DataBind();
+
+                dr.Close();
             }
-
-            gvOffenses.DataSource = dt;
-            gvOffenses.DataBind();
-
-            dr.Close();
-            con.Close();
         }
 
         protected void btnClose_Click(object sender, EventArgs e)

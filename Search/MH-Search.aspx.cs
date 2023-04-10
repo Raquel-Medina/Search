@@ -199,25 +199,28 @@ namespace Search
         {
             string owner = txtOwner.Text.ToString().Trim();
 
-            SqlConnection con = new SqlConnection(connectionString);
-            SqlCommand cmd = new SqlCommand("InfoListByOwnerMH_cama", con);
-
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Add("@OwnerName", SqlDbType.VarChar).Value = owner;
-
-            DataTable dt = new DataTable();
-            SqlDataAdapter adpt = new SqlDataAdapter(cmd);
-            adpt.Fill(dt);
-
-            if (dt.Rows.Count <= 0)
+            using (SqlConnection con = new SqlConnection(connectionString))
             {
-                lblSearchOwnerWarning.Text = "No Results Found";
-                lblSearchOwnerWarning.Visible = true;
-            }
-            else
-            {
-                gvSearchName.DataSource = dt;
-                gvSearchName.DataBind();
+                con.Open();
+                SqlCommand cmd = new SqlCommand("InfoListByOwnerMH_cama", con);
+
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@OwnerName", SqlDbType.VarChar).Value = owner;
+
+                DataTable dt = new DataTable();
+                SqlDataAdapter adpt = new SqlDataAdapter(cmd);
+                adpt.Fill(dt);
+
+                if (dt.Rows.Count <= 0)
+                {
+                    lblSearchOwnerWarning.Text = "No Results Found";
+                    lblSearchOwnerWarning.Visible = true;
+                }
+                else
+                {
+                    gvSearchName.DataSource = dt;
+                    gvSearchName.DataBind();
+                }
             }
         }
 
@@ -228,31 +231,34 @@ namespace Search
             string addressName = txtStreetName.Text.ToString().Trim();
             string addressSuf = ddlSuffix.Text.ToString();
 
-            SqlConnection con = new SqlConnection(connectionString);
-            SqlCommand cmd = new SqlCommand("Infolistbysitusmh_cama", con);
-
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Add("@sNbr", SqlDbType.VarChar).Value = addressNbr;
-            cmd.Parameters.Add("@sDir", SqlDbType.VarChar).Value = addressDir;
-            cmd.Parameters.Add("@sNam", SqlDbType.VarChar).Value = addressName;
-            cmd.Parameters.Add("@sSuf", SqlDbType.VarChar).Value = addressSuf;
-            cmd.Parameters.Add("@OrderByType", SqlDbType.VarChar).Value = "";
-
-
-            cmd.CommandTimeout = 0;
-            DataTable dt = new DataTable();
-            SqlDataAdapter adpt = new SqlDataAdapter(cmd);
-            adpt.Fill(dt);
-
-            if (dt.Rows.Count <= 0)
+            using (SqlConnection con = new SqlConnection(connectionString))
             {
-                lblSearchAddressWarning.Text = "No Results Found";
-                lblSearchAddressWarning.Visible = true;
-            }
-            else
-            {
-                gvSearchAddress.DataSource = dt;
-                gvSearchAddress.DataBind();
+                con.Open();
+                SqlCommand cmd = new SqlCommand("Infolistbysitusmh_cama", con);
+
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@sNbr", SqlDbType.VarChar).Value = addressNbr;
+                cmd.Parameters.Add("@sDir", SqlDbType.VarChar).Value = addressDir;
+                cmd.Parameters.Add("@sNam", SqlDbType.VarChar).Value = addressName;
+                cmd.Parameters.Add("@sSuf", SqlDbType.VarChar).Value = addressSuf;
+                cmd.Parameters.Add("@OrderByType", SqlDbType.VarChar).Value = "";
+
+
+                cmd.CommandTimeout = 0;
+                DataTable dt = new DataTable();
+                SqlDataAdapter adpt = new SqlDataAdapter(cmd);
+                adpt.Fill(dt);
+
+                if (dt.Rows.Count <= 0)
+                {
+                    lblSearchAddressWarning.Text = "No Results Found";
+                    lblSearchAddressWarning.Visible = true;
+                }
+                else
+                {
+                    gvSearchAddress.DataSource = dt;
+                    gvSearchAddress.DataBind();
+                }
             }
         }
 
@@ -263,28 +269,31 @@ namespace Search
             string parcel = txtParcel.Text.ToString().Trim();
             string split = ddlSplit.SelectedValue.ToString();
 
-            SqlConnection con = new SqlConnection(connectionString);
-            SqlCommand cmd = new SqlCommand("Infolistbyparcelmh_cama", con);
-
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Add("@BookNumber", SqlDbType.VarChar).Value = book;
-            cmd.Parameters.Add("@MapNumber", SqlDbType.VarChar).Value = map;
-            cmd.Parameters.Add("@ParcelNumber", SqlDbType.VarChar).Value = parcel;
-            cmd.Parameters.Add("@SplitNumber", SqlDbType.VarChar).Value = split;
-
-            DataTable dt = new DataTable();
-            SqlDataAdapter adpt = new SqlDataAdapter(cmd);
-            adpt.Fill(dt);
-
-            if (dt.Rows.Count <= 0)
+            using (SqlConnection con = new SqlConnection(connectionString))
             {
-                lblSearchParcelWarning.Text = "No Results Found";
-                lblSearchParcelWarning.Visible = true;
-            }
-            else
-            {
-                gvSearchParcel.DataSource = dt;
-                gvSearchParcel.DataBind();
+                con.Open();
+                SqlCommand cmd = new SqlCommand("Infolistbyparcelmh_cama", con);
+
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@BookNumber", SqlDbType.VarChar).Value = book;
+                cmd.Parameters.Add("@MapNumber", SqlDbType.VarChar).Value = map;
+                cmd.Parameters.Add("@ParcelNumber", SqlDbType.VarChar).Value = parcel;
+                cmd.Parameters.Add("@SplitNumber", SqlDbType.VarChar).Value = split;
+
+                DataTable dt = new DataTable();
+                SqlDataAdapter adpt = new SqlDataAdapter(cmd);
+                adpt.Fill(dt);
+
+                if (dt.Rows.Count <= 0)
+                {
+                    lblSearchParcelWarning.Text = "No Results Found";
+                    lblSearchParcelWarning.Visible = true;
+                }
+                else
+                {
+                    gvSearchParcel.DataSource = dt;
+                    gvSearchParcel.DataBind();
+                }
             }
         }
 
@@ -292,25 +301,28 @@ namespace Search
         {
             string sub = txtTaxID.Text.ToString().Trim();
 
-            SqlConnection con = new SqlConnection(connectionString);
-            SqlCommand cmd = new SqlCommand("Infolistbytaxpayeridmh_cama", con);
-
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Add("@TPayerID", SqlDbType.VarChar).Value = sub;
-
-            DataTable dt = new DataTable();
-            SqlDataAdapter adpt = new SqlDataAdapter(cmd);
-            adpt.Fill(dt);
-
-            if (dt.Rows.Count <= 0)
+            using (SqlConnection con = new SqlConnection(connectionString))
             {
-                lblSearchTaxIDWarning.Text = "No Results Found";
-                lblSearchTaxIDWarning.Visible = true;
-            }
-            else
-            {
-                gvSearchTaxID.DataSource = dt;
-                gvSearchTaxID.DataBind();
+                con.Open();
+                SqlCommand cmd = new SqlCommand("Infolistbytaxpayeridmh_cama", con);
+
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@TPayerID", SqlDbType.VarChar).Value = sub;
+
+                DataTable dt = new DataTable();
+                SqlDataAdapter adpt = new SqlDataAdapter(cmd);
+                adpt.Fill(dt);
+
+                if (dt.Rows.Count <= 0)
+                {
+                    lblSearchTaxIDWarning.Text = "No Results Found";
+                    lblSearchTaxIDWarning.Visible = true;
+                }
+                else
+                {
+                    gvSearchTaxID.DataSource = dt;
+                    gvSearchTaxID.DataBind();
+                }
             }
         }
 

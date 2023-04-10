@@ -36,31 +36,33 @@ namespace Search
 
             // *** Stored Procedure *** //
             string detailsProcedure = "[dbo].[spGetInmateDetails]";
-            SqlConnection con = new SqlConnection(connectionString);
-            con.Open();
-            SqlCommand cmd = new SqlCommand(detailsProcedure, con);
-            SqlDataReader dr;
-
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Add("@InmateID", SqlDbType.VarChar).Value = id;
-
-            dr = cmd.ExecuteReader();
-            while (dr.Read())
+            using (SqlConnection con = new SqlConnection(connectionString))
             {
-                // *** Inmate Details *** //
-                imgInmate.ImageUrl = "https://app1.pinal.gov/Files/MugShots/" + subFolder + "/" + id + ".jpg";
-                lblInmateID.Text = dr["InmateID"].ToString();
-                lblName.Text = dr["Name"].ToString();
-                lblAge.Text = dr["Age"].ToString();
-                lblRace.Text = dr["Race"].ToString();
-                lblSex.Text = dr["Sex"].ToString();
-                lblHair.Text = dr["Hair"].ToString();
-                lblEyes.Text = dr["Eyes"].ToString();
-                lblWeight.Text = dr["Weight"].ToString();
-                lblHeight.Text = dr["Height"].ToString();
+                con.Open();
+                SqlCommand cmd = new SqlCommand(detailsProcedure, con);
+                SqlDataReader dr;
+
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@InmateID", SqlDbType.VarChar).Value = id;
+
+                dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    // *** Inmate Details *** //
+                    imgInmate.ImageUrl = "https://app1.pinal.gov/Files/MugShots/" + subFolder + "/" + id + ".jpg";
+                    lblInmateID.Text = dr["InmateID"].ToString();
+                    lblName.Text = dr["Name"].ToString();
+                    lblAge.Text = dr["Age"].ToString();
+                    lblRace.Text = dr["Race"].ToString();
+                    lblSex.Text = dr["Sex"].ToString();
+                    lblHair.Text = dr["Hair"].ToString();
+                    lblEyes.Text = dr["Eyes"].ToString();
+                    lblWeight.Text = dr["Weight"].ToString();
+                    lblHeight.Text = dr["Height"].ToString();
+                }
+
+                dr.Close();
             }
-            dr.Close();
-            con.Close();
         }
 
         private void GetCases(string id)
@@ -68,39 +70,40 @@ namespace Search
             // *** Stored Procedure *** //
             string CasesProcedure = "[dbo].[spGetBookingInfo]";
 
-            SqlConnection con = new SqlConnection(connectionString);
-            con.Open();
-            SqlCommand cmd = new SqlCommand(CasesProcedure, con);
-            SqlDataReader dr;
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Add("@InmateID", SqlDbType.VarChar).Value = id;
-            cmd.CommandTimeout = 0;
-            dr = cmd.ExecuteReader();
-
-            var dt = new DataTable();
-            dt.Columns.Add("CASE NUMBER", typeof(System.String));
-            dt.Columns.Add("BOND AMOUNT", typeof(System.String));
-            dt.Columns.Add("BOND TYPE", typeof(System.String));
-            dt.Columns.Add("STATUTE CODE", typeof(System.String));
-            dt.Columns.Add("ARRIVAL DATE", typeof(System.String));
-
-            while (dr.Read())
+            using (SqlConnection con = new SqlConnection(connectionString))
             {
-                string caseNum = dr["casenumber"].ToString();
-                string bondAmt = dr["Amount"].ToString();
-                string type = dr["type"].ToString();
-                string statuteCode = dr["StatuteCode"].ToString();
-                string arrivalDate = dr["arrivaldt"].ToString();
+                con.Open();
+                SqlCommand cmd = new SqlCommand(CasesProcedure, con);
+                SqlDataReader dr;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@InmateID", SqlDbType.VarChar).Value = id;
+                cmd.CommandTimeout = 0;
+                dr = cmd.ExecuteReader();
 
-                dt.Rows.Add(caseNum, bondAmt, type, statuteCode, arrivalDate);
+                var dt = new DataTable();
+                dt.Columns.Add("CASE NUMBER", typeof(System.String));
+                dt.Columns.Add("BOND AMOUNT", typeof(System.String));
+                dt.Columns.Add("BOND TYPE", typeof(System.String));
+                dt.Columns.Add("STATUTE CODE", typeof(System.String));
+                dt.Columns.Add("ARRIVAL DATE", typeof(System.String));
+
+                while (dr.Read())
+                {
+                    string caseNum = dr["casenumber"].ToString();
+                    string bondAmt = dr["Amount"].ToString();
+                    string type = dr["type"].ToString();
+                    string statuteCode = dr["StatuteCode"].ToString();
+                    string arrivalDate = dr["arrivaldt"].ToString();
+
+                    dt.Rows.Add(caseNum, bondAmt, type, statuteCode, arrivalDate);
+                }
+
+                gvCases.DataSource = dt;
+                gvCases.ShowHeader = true;
+                gvCases.DataBind();
+
+                dr.Close();
             }
-
-            gvCases.DataSource = dt;
-            gvCases.ShowHeader = true;
-            gvCases.DataBind();
-
-            dr.Close();
-            con.Close();
         }
 
         private void GetCourtDates (string id)
@@ -108,33 +111,34 @@ namespace Search
             // *** Stored Procedure *** //
             string courtDatesProcedure = "[dbo].[spGetEventInfo]";
 
-            SqlConnection con = new SqlConnection(connectionString);
-            con.Open();
-            SqlCommand cmd = new SqlCommand(courtDatesProcedure, con);
-            SqlDataReader dr;
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Add("@InmateID", SqlDbType.VarChar).Value = id;
-            cmd.CommandTimeout = 0;
-            dr = cmd.ExecuteReader();
-
-            var dt = new DataTable();
-            dt.Columns.Add("COURT DATE", typeof(System.String));
-            dt.Columns.Add("HEARING", typeof(System.String));
-
-            while (dr.Read())
+            using (SqlConnection con = new SqlConnection(connectionString))
             {
-                string eventDate = dr["EventDate"].ToString();
-                string remarks = dr["Remarks"].ToString();
+                con.Open();
+                SqlCommand cmd = new SqlCommand(courtDatesProcedure, con);
+                SqlDataReader dr;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@InmateID", SqlDbType.VarChar).Value = id;
+                cmd.CommandTimeout = 0;
+                dr = cmd.ExecuteReader();
 
-                dt.Rows.Add(eventDate, remarks);
+                var dt = new DataTable();
+                dt.Columns.Add("COURT DATE", typeof(System.String));
+                dt.Columns.Add("HEARING", typeof(System.String));
+
+                while (dr.Read())
+                {
+                    string eventDate = dr["EventDate"].ToString();
+                    string remarks = dr["Remarks"].ToString();
+
+                    dt.Rows.Add(eventDate, remarks);
+                }
+
+                gvCourtDates.DataSource = dt;
+                gvCourtDates.ShowHeader = true;
+                gvCourtDates.DataBind();
+
+                dr.Close();
             }
-
-            gvCourtDates.DataSource = dt;
-            gvCourtDates.ShowHeader = true;
-            gvCourtDates.DataBind();
-
-            dr.Close();
-            con.Close();
         }
 
         protected void btnBack_Click(object sender, EventArgs e)

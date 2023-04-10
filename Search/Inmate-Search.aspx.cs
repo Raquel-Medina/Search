@@ -53,29 +53,32 @@ namespace Search
             string lastName = txtLastName.Text.ToString().Trim();
             string inmateID = txtInmateID.Text.ToString().Trim();
 
-            SqlConnection con = new SqlConnection(connectionString);
-            SqlCommand cmd = new SqlCommand("GetInmateByFirstLast", con);
-
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Add("@LastName", SqlDbType.VarChar).Value = lastName;
-            cmd.Parameters.Add("@FirstName", SqlDbType.VarChar).Value = firstName;
-            cmd.Parameters.Add("@InmateID", SqlDbType.VarChar).Value = inmateID;
-
-            DataTable dt = new DataTable();
-            SqlDataAdapter adpt = new SqlDataAdapter(cmd);
-            adpt.Fill(dt);
-
-            if (dt.Rows.Count <= 0)
+            using (SqlConnection con = new SqlConnection(connectionString))
             {
-                lblWarning.Text = "No Results Found";
-                lblWarning.Visible = true;
-                gvInmates.Visible = false;
-            }
-            else
-            {
-                gvInmates.DataSource = dt;
-                gvInmates.DataBind();
-                gvInmates.Visible = true;
+                con.Open();
+                SqlCommand cmd = new SqlCommand("GetInmateByFirstLast", con);
+
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@LastName", SqlDbType.VarChar).Value = lastName;
+                cmd.Parameters.Add("@FirstName", SqlDbType.VarChar).Value = firstName;
+                cmd.Parameters.Add("@InmateID", SqlDbType.VarChar).Value = inmateID;
+
+                DataTable dt = new DataTable();
+                SqlDataAdapter adpt = new SqlDataAdapter(cmd);
+                adpt.Fill(dt);
+
+                if (dt.Rows.Count <= 0)
+                {
+                    lblWarning.Text = "No Results Found";
+                    lblWarning.Visible = true;
+                    gvInmates.Visible = false;
+                }
+                else
+                {
+                    gvInmates.DataSource = dt;
+                    gvInmates.DataBind();
+                    gvInmates.Visible = true;
+                }
             }
         }
 

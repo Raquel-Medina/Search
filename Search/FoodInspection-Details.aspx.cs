@@ -30,51 +30,53 @@ namespace Search
 
             // *** Stored Procedure *** //
             string inspDetailsProcedure = "[dbo].[spEHInsp_NewDetailsByIDNew]";
-            SqlConnection con = new SqlConnection(connectionString);
-            con.Open();
-            SqlCommand cmd = new SqlCommand(inspDetailsProcedure, con);
-            SqlDataReader dr;
-
-            //inspection details 
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Add("@g6_act_num", SqlDbType.Money).Value = inspID;
-            dr = cmd.ExecuteReader();
-
-            while (dr.Read())
+            using (SqlConnection con = new SqlConnection(connectionString))
             {
-                string startTime = Convert.ToDateTime(dr["StartTime"].ToString()).ToString("h:mm tt");
-                string endTime = Convert.ToDateTime(dr["EndTime"].ToString()).ToString("h:mm tt");
-                string pn = dr["ApplicantPhone"].ToString();
-                string phone;
-                string tempObservations = dr["guide_item_comment"].ToString();
+                con.Open();
+                SqlCommand cmd = new SqlCommand(inspDetailsProcedure, con);
+                SqlDataReader dr;
 
-                if (pn != "")
+                //inspection details 
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@g6_act_num", SqlDbType.Money).Value = inspID;
+                dr = cmd.ExecuteReader();
+
+                while (dr.Read())
                 {
-                    phone = "(" + pn.Substring(0, 3) + ") " + pn.Substring(3, 3) + "-" + pn.Substring(6, 4);
-                }
-                else phone = "0";
+                    string startTime = Convert.ToDateTime(dr["StartTime"].ToString()).ToString("h:mm tt");
+                    string endTime = Convert.ToDateTime(dr["EndTime"].ToString()).ToString("h:mm tt");
+                    string pn = dr["ApplicantPhone"].ToString();
+                    string phone;
+                    string tempObservations = dr["guide_item_comment"].ToString();
 
-                // Top portion of form
-                lblRating.Text = dr["guide_item_status"].ToString();
-                lblDate.Text = dr["InspDate"].ToString();
-                lblTimeIn.Text = startTime.ToString();
-                lblTimeOut.Text = endTime.ToString();
-                lblEstablishment.Text = dr["B1_Special_Text"].ToString();
-                lblAddress.Text = dr["PropertyAddress"].ToString() + " " + dr["PropertyAddressCity"].ToString() + " " + dr["PropertyAddressZip"].ToString();
-                lblPhone.Text = phone;
-                lblPermitNum.Text = dr["B1_ALT_ID"].ToString();
-                lblPermitHolder.Text = dr["BusinessOwnerFullName"].ToString();
-                lblPurpose.Text = dr["InspType"].ToString();
-                lblEstType.Text = dr["PermitType"].ToString();
-                lblRiskCategory.Text = dr["RiskClassification"].ToString();
+                    if (pn != "")
+                    {
+                        phone = "(" + pn.Substring(0, 3) + ") " + pn.Substring(3, 3) + "-" + pn.Substring(6, 4);
+                    }
+                    else phone = "0";
 
-                // Bottom portion of form
-                if (tempObservations != "")
-                {
-                    tempObs.Visible = true;
-                    lblTempObs.Text = tempObservations;
+                    // Top portion of form
+                    lblRating.Text = dr["guide_item_status"].ToString();
+                    lblDate.Text = dr["InspDate"].ToString();
+                    lblTimeIn.Text = startTime.ToString();
+                    lblTimeOut.Text = endTime.ToString();
+                    lblEstablishment.Text = dr["B1_Special_Text"].ToString();
+                    lblAddress.Text = dr["PropertyAddress"].ToString() + " " + dr["PropertyAddressCity"].ToString() + " " + dr["PropertyAddressZip"].ToString();
+                    lblPhone.Text = phone;
+                    lblPermitNum.Text = dr["B1_ALT_ID"].ToString();
+                    lblPermitHolder.Text = dr["BusinessOwnerFullName"].ToString();
+                    lblPurpose.Text = dr["InspType"].ToString();
+                    lblEstType.Text = dr["PermitType"].ToString();
+                    lblRiskCategory.Text = dr["RiskClassification"].ToString();
+
+                    // Bottom portion of form
+                    if (tempObservations != "")
+                    {
+                        tempObs.Visible = true;
+                        lblTempObs.Text = tempObservations;
+                    }
+                    else { tempObs.Visible = false; }
                 }
-                else { tempObs.Visible = false; }
             }
         }
 
@@ -85,125 +87,127 @@ namespace Search
 
             // *** Stored Procedure *** //
             string itemDetailsProcedure = "[dbo].[spEHInsp_NewItemDetailsByIDNew]";
-            SqlConnection con = new SqlConnection(connectionString);
-            con.Open();
-            SqlCommand cmd = new SqlCommand(itemDetailsProcedure, con);
-            SqlDataReader dr;
-
-            //inspection details 
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Add("@g6_act_num", SqlDbType.Money).Value = inspID;
-            dr = cmd.ExecuteReader();
-
-            while (dr.Read())
+            using (SqlConnection con = new SqlConnection(connectionString))
             {
-                string itemStatus = dr["guide_item_status"].ToString();
-                string itemDisplayOrder = dr["guide_item_display_order"].ToString();
-                string itemCount = dr["Count"].ToString();
-                string resultComment = dr["ResultComment"].ToString();
+                con.Open();
+                SqlCommand cmd = new SqlCommand(itemDetailsProcedure, con);
+                SqlDataReader dr;
 
-                if ((itemStatus == "Corrected" || itemStatus == "Out" || itemStatus == "No") && (int.Parse(itemDisplayOrder) < 60))
+                //inspection details 
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@g6_act_num", SqlDbType.Money).Value = inspID;
+                dr = cmd.ExecuteReader();
+
+                while (dr.Read())
                 {
-                    sum = sum + 1;
-                    lblRiskViolations.Text = sum.ToString();
+                    string itemStatus = dr["guide_item_status"].ToString();
+                    string itemDisplayOrder = dr["guide_item_display_order"].ToString();
+                    string itemCount = dr["Count"].ToString();
+                    string resultComment = dr["ResultComment"].ToString();
+
+                    if ((itemStatus == "Corrected" || itemStatus == "Out" || itemStatus == "No") && (int.Parse(itemDisplayOrder) < 60))
+                    {
+                        sum = sum + 1;
+                        lblRiskViolations.Text = sum.ToString();
+                    }
+
+                    if (((itemStatus == "Corrected" || itemStatus == "Out" || itemStatus == "No") && itemCount != "0") && (int.Parse(itemDisplayOrder) < 60))
+                    {
+                        sum = sum + 1;
+                        lblRepeatViolations.Text = sum.ToString();
+                    }
+                    else { lblRepeatViolations.Text = "0"; }
+
+                    // Set Compliance items
+                    string labelID = "lblCompliance" + itemDisplayOrder; // Set lable ID
+                    Label lbl = (Label)FindControl(labelID);
+
+                    if (int.Parse(itemDisplayOrder) < 60)
+                    {
+                        if (itemStatus == "Not Applicable")
+                        {
+                            lbl.Text = "N/A";
+                        }
+                        else if (itemStatus == "Not Observed")
+                        {
+                            lbl.Text = "N/O";
+                        }
+                        else if (itemStatus == "Corrected")
+                        {
+                            lbl.Text = "Out";
+                        }
+                        else if (itemStatus == "Yes")
+                        {
+                            lbl.Text = "In";
+                        }
+                        else if (itemStatus == "No")
+                        {
+                            lbl.Text = "Out";
+                        }
+                        else if (itemStatus == "Out - Major")
+                        {
+                            lbl.Text = "Out";
+                        }
+                        else if (itemStatus == "Corrected - Major")
+                        {
+                            lbl.Text = "Out";
+                        }
+                        else
+                        {
+                            lbl.Text = itemStatus;
+                        }
+                    }
+
+                    if (int.Parse(itemDisplayOrder) > 60)
+                    {
+                        if (itemStatus == "Yes")
+                        {
+                            lbl.Text = "";
+                        }
+                        else if (itemStatus == "No")
+                        {
+                            lbl.Text = "X";
+                        }
+                        else if (itemStatus == "Out")
+                        {
+                            lbl.Text = "X";
+                        }
+                        else if (itemStatus == "Corrected")
+                        {
+                            lbl.Text = "X";
+                        }
+                        else if (itemStatus == "RCP-Out")
+                        {
+                            lbl.Text = "X";
+                        }
+                    }
+
+                    // Set COS items
+                    string labelCosID = "lblCOS" + itemDisplayOrder; // Set lable ID
+                    Label lblCos = (Label)FindControl(labelCosID);
+
+                    if (itemStatus == "Corrected")
+                    {
+                        lblCos.Text = "X";
+                    }
+
+                    // Set Repeat items
+                    string labelRepeatID = "lblRepeat" + itemDisplayOrder; // Set lable ID
+                    Label lblRepeat = (Label)FindControl(labelRepeatID);
+
+                    if (itemStatus == "Corrected")
+                    {
+                        lblRepeat.Text = "X";
+                    }
+
+                    // Comments Section
+                    if (resultComment != "")
+                    {
+                        lblComments.Text = resultComment;
+                        comments.Visible = true;
+                    }
+                    else { comments.Visible = false; }
                 }
-
-                if (((itemStatus == "Corrected" || itemStatus == "Out" || itemStatus == "No") && itemCount != "0") && (int.Parse(itemDisplayOrder) < 60))
-                {
-                    sum = sum + 1;
-                    lblRepeatViolations.Text = sum.ToString();
-                }
-                else { lblRepeatViolations.Text = "0"; }
-
-                // Set Compliance items
-                string labelID = "lblCompliance" + itemDisplayOrder; // Set lable ID
-                Label lbl = (Label)FindControl(labelID);
-
-                if (int.Parse(itemDisplayOrder) < 60)
-                {
-                    if (itemStatus == "Not Applicable")
-                    {
-                        lbl.Text = "N/A";
-                    }
-                    else if (itemStatus == "Not Observed")
-                    {
-                        lbl.Text = "N/O";
-                    }
-                    else if (itemStatus == "Corrected")
-                    {
-                        lbl.Text = "Out";
-                    }
-                    else if (itemStatus == "Yes")
-                    {
-                        lbl.Text = "In";
-                    }
-                    else if (itemStatus == "No")
-                    {
-                        lbl.Text = "Out";
-                    }
-                    else if (itemStatus == "Out - Major")
-                    {
-                        lbl.Text = "Out";
-                    }
-                    else if (itemStatus == "Corrected - Major")
-                    {
-                        lbl.Text = "Out";
-                    }
-                    else
-                    {
-                        lbl.Text = itemStatus;
-                    }
-                }
-
-                if (int.Parse(itemDisplayOrder) > 60)
-                {
-                    if (itemStatus == "Yes")
-                    {
-                        lbl.Text = "";
-                    }
-                    else if (itemStatus == "No")
-                    {
-                        lbl.Text = "X";
-                    }
-                    else if (itemStatus == "Out")
-                    {
-                        lbl.Text = "X";
-                    }
-                    else if (itemStatus == "Corrected")
-                    {
-                        lbl.Text = "X";
-                    }
-                    else if (itemStatus == "RCP-Out")
-                    {
-                        lbl.Text = "X";
-                    }
-                }
-
-                // Set COS items
-                string labelCosID = "lblCOS" + itemDisplayOrder; // Set lable ID
-                Label lblCos = (Label)FindControl(labelCosID);
-
-                if (itemStatus == "Corrected")
-                {
-                    lblCos.Text = "X";
-                }
-
-                // Set Repeat items
-                string labelRepeatID = "lblRepeat" + itemDisplayOrder; // Set lable ID
-                Label lblRepeat = (Label)FindControl(labelRepeatID);
-
-                if (itemStatus == "Corrected")
-                {
-                    lblRepeat.Text = "X";
-                }
-
-                // Comments Section
-                if (resultComment != "")
-                {
-                    lblComments.Text = resultComment;
-                    comments.Visible = true;
-                }
-                else { comments.Visible = false; }
             }
         }
 
@@ -213,34 +217,34 @@ namespace Search
 
             // *** Stored Procedure *** //
             string obsProcedure = "[dbo].[spEHInsp_ObservationsIDNew]";
-
-            SqlConnection con = new SqlConnection(connectionString);
-            con.Open();
-            SqlCommand cmd = new SqlCommand(obsProcedure, con);
-            SqlDataReader dr;
-
-            // observations
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Add("@g6_act_num", SqlDbType.VarChar).Value = inspID;
-            dr = cmd.ExecuteReader();
-
-            var dataTable = new DataTable();
-            dataTable.Columns.Add("Item#", typeof(System.String));
-            dataTable.Columns.Add("Violation Description", typeof(System.String));
-
-            while (dr.Read())
+            using (SqlConnection con = new SqlConnection(connectionString))
             {
-                string git = dr["guide_item_text"].ToString();
-                string gic = dr["guide_item_comment"].ToString();
+                con.Open();
+                SqlCommand cmd = new SqlCommand(obsProcedure, con);
+                SqlDataReader dr;
 
-                dataTable.Rows.Add(git, gic);
+                // observations
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@g6_act_num", SqlDbType.VarChar).Value = inspID;
+                dr = cmd.ExecuteReader();
+
+                var dataTable = new DataTable();
+                dataTable.Columns.Add("Item#", typeof(System.String));
+                dataTable.Columns.Add("Violation Description", typeof(System.String));
+
+                while (dr.Read())
+                {
+                    string git = dr["guide_item_text"].ToString();
+                    string gic = dr["guide_item_comment"].ToString();
+
+                    dataTable.Rows.Add(git, gic);
+                }
+                gvObsCorActions.DataSource = dataTable;
+                gvObsCorActions.ShowHeader = true;
+                gvObsCorActions.DataBind();
+
+                dr.Close();
             }
-            gvObsCorActions.DataSource = dataTable;
-            gvObsCorActions.ShowHeader = true;
-            gvObsCorActions.DataBind();
-
-            dr.Close();
-            con.Close();
         }
 
         protected void btnBack_Click(object sender, EventArgs e)

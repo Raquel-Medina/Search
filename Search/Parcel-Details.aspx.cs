@@ -77,344 +77,350 @@ namespace Search
 
             // *** Stored Procedure *** //
             string detailsProcedure = "[dbo].[Sp_search_detailsinfobyparcelyear_cama]";
-            SqlConnection con = new SqlConnection(connectionString);
-            con.Open();
-            SqlCommand cmdDetails = new SqlCommand(detailsProcedure, con);
-            SqlDataReader drDetails;
-
-            // parcel details
-            cmdDetails.CommandType = CommandType.StoredProcedure;
-            cmdDetails.Parameters.Add("@BookNumber", SqlDbType.VarChar).Value = book;
-            cmdDetails.Parameters.Add("@MapNumber", SqlDbType.VarChar).Value = map;
-            cmdDetails.Parameters.Add("@ParcelNumber", SqlDbType.VarChar).Value = parcel;
-            cmdDetails.Parameters.Add("@SplitNumber", SqlDbType.VarChar).Value = split;
-            cmdDetails.Parameters.Add("@Year", SqlDbType.VarChar).Value = taxYear;
-
-            drDetails = cmdDetails.ExecuteReader();
-            while (drDetails.Read())
+            using (SqlConnection con = new SqlConnection(connectionString))
             {
-                string city = drDetails["p_city"].ToString();
-                string propAddress = drDetails["p_stnm"].ToString() + " " + drDetails["p_dir"] + " " + drDetails["p_stna"] + " " + drDetails["p_sfx"] + " " + drDetails["p_city"].ToString() + ", " + drDetails["p_stat"].ToString() + " " + drDetails["p_zipc"].ToString();
-                string owner2 = drDetails["owner_na2"].ToString();
-                string careOf = drDetails["care_of"].ToString();
-                string sub = drDetails["sub_div"].ToString();
-                string unit = drDetails["unit"].ToString();
-                string block = drDetails["BLOCK"].ToString();
-                string lot = drDetails["lot"].ToString();
-                string phase = drDetails["phase"].ToString();
-                string cabinet = drDetails["cabinet"].ToString();
-                string slide = drDetails["slide"].ToString();
-                string recDate = drDetails["dkt_month"].ToString() + "/" + drDetails["dkt_day"].ToString() + "/" + drDetails["dkt_year"].ToString();
-                decimal saleAmount = decimal.Parse(drDetails["docket_prc"].ToString());
+                con.Open();
+                SqlCommand cmdDetails = new SqlCommand(detailsProcedure, con);
+                SqlDataReader drDetails;
 
-                hlAddressLocation.NavigateUrl = "https://www.google.com/maps?q=" + propAddress;
+                // parcel details
+                cmdDetails.CommandType = CommandType.StoredProcedure;
+                cmdDetails.Parameters.Add("@BookNumber", SqlDbType.VarChar).Value = book;
+                cmdDetails.Parameters.Add("@MapNumber", SqlDbType.VarChar).Value = map;
+                cmdDetails.Parameters.Add("@ParcelNumber", SqlDbType.VarChar).Value = parcel;
+                cmdDetails.Parameters.Add("@SplitNumber", SqlDbType.VarChar).Value = split;
+                cmdDetails.Parameters.Add("@Year", SqlDbType.VarChar).Value = taxYear;
 
-                // *** Property Details *** //
-                lblParcelNum.Text = parcelnum;
-                hlTaxAreaCode.Text = drDetails["tax_area_c"].ToString();
-                hlTaxAreaCode.NavigateUrl = "https://treasurer.pinalcountyaz.gov/ParcelInquiry/Main/AreaCodeRates?taxyear=" + DateTime.Now.AddYears(-1).Year.ToString() + "&areacode=" + drDetails["tax_area_c"].ToString();
-                ttUseCode.Title = "ASSESSOR USE CODE   Primary Use: " + drDetails["primaryuse"].ToString() + "  Category: " + drDetails["category"].ToString() + "  Sub-Category: " + drDetails["subcategory"].ToString();
-                lblUseCode.Text = drDetails["use_code"].ToString();
-                lblSTR.Text = drDetails["section"].ToString() + "/" + drDetails["township"].ToString() + "/" + drDetails["range"].ToString();
-                lblPropDesc.Text = drDetails["legal_text"].ToString();
-                ttPropDesc.Title = "This property description may be condensed and/or abbreviated for Assessor purposes. This description should not be used for transference of property. Please refer to official recorded documents for complete legal descriptions.";
-                lblOwner1.Text = drDetails["owner_na1"].ToString();
-
-                if (owner2 != "")
+                drDetails = cmdDetails.ExecuteReader();
+                while (drDetails.Read())
                 {
-                    lblOwner2.Text = owner2;
-                }
-                else { lblOwner2.Text = "N/A"; }
+                    string city = drDetails["p_city"].ToString();
+                    string propAddress = drDetails["p_stnm"].ToString() + " " + drDetails["p_dir"] + " " + drDetails["p_stna"] + " " + drDetails["p_sfx"] + " " + drDetails["p_city"].ToString() + ", " + drDetails["p_stat"].ToString() + " " + drDetails["p_zipc"].ToString();
+                    string owner2 = drDetails["owner_na2"].ToString();
+                    string careOf = drDetails["care_of"].ToString();
+                    string sub = drDetails["sub_div"].ToString();
+                    string unit = drDetails["unit"].ToString();
+                    string block = drDetails["BLOCK"].ToString();
+                    string lot = drDetails["lot"].ToString();
+                    string phase = drDetails["phase"].ToString();
+                    string cabinet = drDetails["cabinet"].ToString();
+                    string slide = drDetails["slide"].ToString();
+                    string recDate = drDetails["dkt_month"].ToString() + "/" + drDetails["dkt_day"].ToString() + "/" + drDetails["dkt_year"].ToString();
+                    decimal saleAmount = decimal.Parse(drDetails["docket_prc"].ToString());
 
-                if (careOf != "")
-                {
-                    lblCareof.Text = careOf;
-                }
-                else { lblCareof.Text = "N/A"; }
-                
-                lblMailingAddress.Text = drDetails["address"].ToString() + " " + drDetails["city"].ToString() + ", " + drDetails["state"].ToString() + " " + drDetails["zip_code"].ToString();
+                    hlAddressLocation.NavigateUrl = "https://www.google.com/maps?q=" + propAddress;
 
-                if (city != "")
-                {
-                    lblPropAddress.Text = propAddress;
-                }
-                else { lblPropAddress.Text = ""; }
+                    // *** Property Details *** //
+                    lblParcelNum.Text = parcelnum;
+                    hlTaxAreaCode.Text = drDetails["tax_area_c"].ToString();
+                    hlTaxAreaCode.NavigateUrl = "https://treasurer.pinalcountyaz.gov/ParcelInquiry/Main/AreaCodeRates?taxyear=" + DateTime.Now.AddYears(-1).Year.ToString() + "&areacode=" + drDetails["tax_area_c"].ToString();
+                    ttUseCode.Title = "ASSESSOR USE CODE   Primary Use: " + drDetails["primaryuse"].ToString() + "  Category: " + drDetails["category"].ToString() + "  Sub-Category: " + drDetails["subcategory"].ToString();
+                    lblUseCode.Text = drDetails["use_code"].ToString();
+                    lblSTR.Text = drDetails["section"].ToString() + "/" + drDetails["township"].ToString() + "/" + drDetails["range"].ToString();
+                    lblPropDesc.Text = drDetails["legal_text"].ToString();
+                    ttPropDesc.Title = "This property description may be condensed and/or abbreviated for Assessor purposes. This description should not be used for transference of property. Please refer to official recorded documents for complete legal descriptions.";
+                    lblOwner1.Text = drDetails["owner_na1"].ToString();
 
-                ttPropAddress.Title = "Property Address refers to a geographical location: it may not match the mailing address city or zip code.";
+                    if (owner2 != "")
+                    {
+                        lblOwner2.Text = owner2;
+                    }
+                    else { lblOwner2.Text = "N/A"; }
 
-                if (sub != "")
-                {
-                    lblSubdivision.Text = sub;
-                }
-                else { lblSubdivision.Text = "N/A"; }
-                
-                if (unit != "")
-                {
-                    lblUnit.Text = unit;
-                }
-                else { lblUnit.Text = "N/A"; }
-                
-                if (block != "")
-                {
-                    lblBlock.Text = block;
-                }
-                else { lblBlock.Text = "N/A"; }
-                
-                if (lot != "")
-                {
-                    lblLot.Text = lot;
-                }
-                else { lblLot.Text = "N/A"; }
+                    if (careOf != "")
+                    {
+                        lblCareof.Text = careOf;
+                    }
+                    else { lblCareof.Text = "N/A"; }
 
-                if (phase != "")
-                {
-                    lblPhase.Text = phase;
-                }
-                else { lblPhase.Text = "N/A"; }
+                    lblMailingAddress.Text = drDetails["address"].ToString() + " " + drDetails["city"].ToString() + ", " + drDetails["state"].ToString() + " " + drDetails["zip_code"].ToString();
 
-                if (cabinet != "")
-                {
-                    lblCabinet.Text = cabinet;
-                }
-                else { lblCabinet.Text = "N/A"; }
+                    if (city != "")
+                    {
+                        lblPropAddress.Text = propAddress;
+                    }
+                    else { lblPropAddress.Text = ""; }
 
-                if (slide != "")
-                {
-                    lblSlide.Text = slide;
-                }
-                else { lblSlide.Text = "N/A"; }
+                    ttPropAddress.Title = "Property Address refers to a geographical location: it may not match the mailing address city or zip code.";
 
-                if (recDate != "0/0/0")
-                {
-                    lblRecDate.Text = recDate;
-                }
-                else { lblRecDate.Text = "Not Given"; }
+                    if (sub != "")
+                    {
+                        lblSubdivision.Text = sub;
+                    }
+                    else { lblSubdivision.Text = "N/A"; }
 
-                if (saleAmount > 0)
-                {
-                    lblSaleAmt.Text = string.Format("{0:C}", saleAmount);
-                }
-                else { lblSaleAmt.Text = "Not Given"; }
+                    if (unit != "")
+                    {
+                        lblUnit.Text = unit;
+                    }
+                    else { lblUnit.Text = "N/A"; }
 
-                // *** Parcel Details *** //
-                decimal parcelSize = decimal.Parse(drDetails["prcl_size"].ToString());
-                string llc = drDetails["land_lg_cl"].ToString();
-                string ilc = drDetails["impr_lg_cl"].ToString();
-                decimal fcvMoney = decimal.Parse(drDetails["total_fcv"].ToString());
-                decimal lvpMoney = decimal.Parse(drDetails["total_lpv"].ToString());
-                decimal afcvMoney = decimal.Parse(drDetails["t_fcv_av"].ToString());
-                decimal alpvMoney = decimal.Parse(drDetails["t_lpv_av"].ToString());
+                    if (block != "")
+                    {
+                        lblBlock.Text = block;
+                    }
+                    else { lblBlock.Text = "N/A"; }
 
-                lblParcelSize.Text = Math.Round(parcelSize, 2).ToString();
-                lblSizeIndicator.Text = drDetails["land_ind"].ToString();
-                
-                if (llc != "")
-                {
-                    lblLandLegalClass.Text = drDetails["land_lg_cl"].ToString() + "-" + drDetails["land_descr"].ToString();
-                }
-                else { lblLandLegalClass.Text = "Not Given"; }
-                
-                if (ilc == "")
-                {
-                    lblImprLegalClass.Text = drDetails["impr_lg_cl"].ToString() + "-" + drDetails["impr_descr"].ToString();
-                }
-                else { lblImprLegalClass.Text = "Not Given"; }
+                    if (lot != "")
+                    {
+                        lblLot.Text = lot;
+                    }
+                    else { lblLot.Text = "N/A"; }
 
-                lblFCV.Text = String.Format("{0:C}", fcvMoney);
-                lblLVP.Text = String.Format("{0:C}", lvpMoney);
-                lblAssessedFCV.Text = String.Format("{0:C}", afcvMoney);
-                lblAssessedLPV.Text = String.Format("{0:C}", alpvMoney);
+                    if (phase != "")
+                    {
+                        lblPhase.Text = phase;
+                    }
+                    else { lblPhase.Text = "N/A"; }
 
-                // *** Attached Personal Property *** //
-                string attachedProp = drDetails["mhcheck"].ToString();
-                if (attachedProp != "0")
-                {
-                    hlAttachedProp.Text = "View Personal Property Attached to This Parcel";
-                    hlAttachedProp.NavigateUrl = "MH-Details.aspx?id=" + drDetails["accountno"].ToString();
+                    if (cabinet != "")
+                    {
+                        lblCabinet.Text = cabinet;
+                    }
+                    else { lblCabinet.Text = "N/A"; }
+
+                    if (slide != "")
+                    {
+                        lblSlide.Text = slide;
+                    }
+                    else { lblSlide.Text = "N/A"; }
+
+                    if (recDate != "0/0/0")
+                    {
+                        lblRecDate.Text = recDate;
+                    }
+                    else { lblRecDate.Text = "Not Given"; }
+
+                    if (saleAmount > 0)
+                    {
+                        lblSaleAmt.Text = string.Format("{0:C}", saleAmount);
+                    }
+                    else { lblSaleAmt.Text = "Not Given"; }
+
+                    // *** Parcel Details *** //
+                    decimal parcelSize = decimal.Parse(drDetails["prcl_size"].ToString());
+                    string llc = drDetails["land_lg_cl"].ToString();
+                    string ilc = drDetails["impr_lg_cl"].ToString();
+                    decimal fcvMoney = decimal.Parse(drDetails["total_fcv"].ToString());
+                    decimal lvpMoney = decimal.Parse(drDetails["total_lpv"].ToString());
+                    decimal afcvMoney = decimal.Parse(drDetails["t_fcv_av"].ToString());
+                    decimal alpvMoney = decimal.Parse(drDetails["t_lpv_av"].ToString());
+
+                    lblParcelSize.Text = Math.Round(parcelSize, 2).ToString();
+                    lblSizeIndicator.Text = drDetails["land_ind"].ToString();
+
+                    if (llc != "")
+                    {
+                        lblLandLegalClass.Text = drDetails["land_lg_cl"].ToString() + "-" + drDetails["land_descr"].ToString();
+                    }
+                    else { lblLandLegalClass.Text = "Not Given"; }
+
+                    if (ilc == "")
+                    {
+                        lblImprLegalClass.Text = drDetails["impr_lg_cl"].ToString() + "-" + drDetails["impr_descr"].ToString();
+                    }
+                    else { lblImprLegalClass.Text = "Not Given"; }
+
+                    lblFCV.Text = String.Format("{0:C}", fcvMoney);
+                    lblLVP.Text = String.Format("{0:C}", lvpMoney);
+                    lblAssessedFCV.Text = String.Format("{0:C}", afcvMoney);
+                    lblAssessedLPV.Text = String.Format("{0:C}", alpvMoney);
+
+                    // *** Attached Personal Property *** //
+                    string attachedProp = drDetails["mhcheck"].ToString();
+                    if (attachedProp != "0")
+                    {
+                        hlAttachedProp.Text = "View Personal Property Attached to This Parcel";
+                        hlAttachedProp.NavigateUrl = "MH-Details.aspx?id=" + drDetails["accountno"].ToString();
+                    }
+                    else lblAttachedProp.Text = "No Personal Property Listed";
                 }
-                else lblAttachedProp.Text = "No Personal Property Listed";
+
+                drDetails.Close();
             }
-            drDetails.Close();
-            con.Close();
         }
 
         private void GetDocuments(string parcelID, string book, string map, string parcel, string split)
         {
             // *** Stored Procedure *** //
             string documentsProcedure = "[dbo].[Sp_search_ParcelFeeNumbers]";
-
-            SqlConnection con = new SqlConnection(connectionString);
-            con.Open();
-            SqlCommand cmdDocs = new SqlCommand(documentsProcedure, con);
-            SqlDataReader drDocs;
-
-            // parcel documents
-            cmdDocs.CommandType = CommandType.StoredProcedure;
-            cmdDocs.Parameters.Add("@BookNumber", SqlDbType.VarChar).Value = book;
-            cmdDocs.Parameters.Add("@MapNumber", SqlDbType.VarChar).Value = map;
-            cmdDocs.Parameters.Add("@ParcelNumber", SqlDbType.VarChar).Value = parcel;
-            cmdDocs.Parameters.Add("@SplitNumber", SqlDbType.VarChar).Value = split;
-
-            // *** Documents *** //
-            drDocs = cmdDocs.ExecuteReader();
-            var dataTable = new DataTable();
-            dataTable.Columns.Add("", typeof(System.String));
-
-            if (drDocs.HasRows)
+            using (SqlConnection con = new SqlConnection(connectionString))
             {
-                while (drDocs.Read())
-                {
-                    string feeNumber = drDocs["FeeNumber"].ToString();
-                    string docNum = feeNumber.Substring(0, 4) + "-" + feeNumber.Substring(4, 6);
+                con.Open();
+                SqlCommand cmdDocs = new SqlCommand(documentsProcedure, con);
+                SqlDataReader drDocs;
 
-                    dataTable.Rows.Add(docNum);
+                // parcel documents
+                cmdDocs.CommandType = CommandType.StoredProcedure;
+                cmdDocs.Parameters.Add("@BookNumber", SqlDbType.VarChar).Value = book;
+                cmdDocs.Parameters.Add("@MapNumber", SqlDbType.VarChar).Value = map;
+                cmdDocs.Parameters.Add("@ParcelNumber", SqlDbType.VarChar).Value = parcel;
+                cmdDocs.Parameters.Add("@SplitNumber", SqlDbType.VarChar).Value = split;
+
+                // *** Documents *** //
+                drDocs = cmdDocs.ExecuteReader();
+                var dataTable = new DataTable();
+                dataTable.Columns.Add("", typeof(System.String));
+
+                if (drDocs.HasRows)
+                {
+                    while (drDocs.Read())
+                    {
+                        string feeNumber = drDocs["FeeNumber"].ToString();
+                        string docNum = feeNumber.Substring(0, 4) + "-" + feeNumber.Substring(4, 6);
+
+                        dataTable.Rows.Add(docNum);
+                    }
+
+                    gvDocuments.DataSource = dataTable;
+                    gvDocuments.ShowHeader = false;
+                    gvDocuments.DataBind();
+
+                    for (int i = 0; i < gvDocuments.Rows.Count; i++)
+                    {
+                        HyperLink hlDocument = new HyperLink();
+                        hlDocument.NavigateUrl = "https://acclaim.pinalcountyaz.gov/AcclaimWeb/Details/GetDocumentbyInstrumentNumber/DOC/" + gvDocuments.Rows[i].Cells[0].Text;
+                        hlDocument.Text = gvDocuments.Rows[i].Cells[0].Text;
+                        hlDocument.Target = "_blank";
+                        gvDocuments.Rows[i].Cells[0].Controls.Add(hlDocument);
+                    }
                 }
 
-                gvDocuments.DataSource = dataTable;
-                gvDocuments.ShowHeader = false;
-                gvDocuments.DataBind();
-
-                for (int i = 0; i < gvDocuments.Rows.Count; i++)
-                {
-                    HyperLink hlDocument = new HyperLink();
-                    hlDocument.NavigateUrl = "https://acclaim.pinalcountyaz.gov/AcclaimWeb/Details/GetDocumentbyInstrumentNumber/DOC/" + gvDocuments.Rows[i].Cells[0].Text;
-                    hlDocument.Text = gvDocuments.Rows[i].Cells[0].Text;
-                    hlDocument.Target = "_blank";
-                    gvDocuments.Rows[i].Cells[0].Controls.Add(hlDocument);
-                }
+                drDocs.Close();
             }
-            drDocs.Close();
-            con.Close();
         }
 
         private void GetExemptions(string parcelID, string book, string map, string parcel, string split, string taxYear)
         {
             // *** Stored Procedure *** //
             string exemptionsProcedure = "[dbo].[Sp_search_imprdetails_cama]";
-
-            SqlConnection con = new SqlConnection(connectionString);
-            con.Open();
-            SqlCommand cmdExemptions = new SqlCommand(exemptionsProcedure, con);
-            SqlDataReader drExemptions;
-
-            // parcel exemptions
-            cmdExemptions.CommandType = CommandType.StoredProcedure;
-            cmdExemptions.Parameters.Add("@BookNumber", SqlDbType.VarChar).Value = book;
-            cmdExemptions.Parameters.Add("@MapNumber", SqlDbType.VarChar).Value = map;
-            cmdExemptions.Parameters.Add("@ParcelNumber", SqlDbType.VarChar).Value = parcel;
-            cmdExemptions.Parameters.Add("@SplitNumber", SqlDbType.VarChar).Value = split;
-            cmdExemptions.Parameters.Add("@TaxYear", SqlDbType.VarChar).Value = taxYear;
-
-            // *** Exemptions *** //
-            cmdExemptions.CommandTimeout = 0;
-            drExemptions = cmdExemptions.ExecuteReader();
-            string exemptType;
-            while (drExemptions.Read())
+            using (SqlConnection con = new SqlConnection(connectionString))
             {
-                exemptType = drExemptions["exempt_typ"].ToString();
-                if (exemptType.Contains("W-FCV") || exemptType.Contains("W-LPV"))
-                {
-                    lblWidow.Text = "Yes";
-                }
-                else lblWidow.Text = "No";
+                con.Open();
+                SqlCommand cmdExemptions = new SqlCommand(exemptionsProcedure, con);
+                SqlDataReader drExemptions;
 
-                if (exemptType.Contains("R-FCV") || exemptType.Contains("R-LPV"))
-                {
-                    lblWidower.Text = "Yes";
-                }
-                else lblWidower.Text = "No";
+                // parcel exemptions
+                cmdExemptions.CommandType = CommandType.StoredProcedure;
+                cmdExemptions.Parameters.Add("@BookNumber", SqlDbType.VarChar).Value = book;
+                cmdExemptions.Parameters.Add("@MapNumber", SqlDbType.VarChar).Value = map;
+                cmdExemptions.Parameters.Add("@ParcelNumber", SqlDbType.VarChar).Value = parcel;
+                cmdExemptions.Parameters.Add("@SplitNumber", SqlDbType.VarChar).Value = split;
+                cmdExemptions.Parameters.Add("@TaxYear", SqlDbType.VarChar).Value = taxYear;
 
-                if (exemptType.Contains("D-FCV") || exemptType.Contains("D-LPV"))
+                // *** Exemptions *** //
+                cmdExemptions.CommandTimeout = 0;
+                drExemptions = cmdExemptions.ExecuteReader();
+                string exemptType;
+                while (drExemptions.Read())
                 {
-                    lblDisabled.Text = "Yes";
-                }
-                else lblDisabled.Text = "No";
+                    exemptType = drExemptions["exempt_typ"].ToString();
+                    if (exemptType.Contains("W-FCV") || exemptType.Contains("W-LPV"))
+                    {
+                        lblWidow.Text = "Yes";
+                    }
+                    else lblWidow.Text = "No";
 
-                if (exemptType.Contains("8"))
-                {
-                    lblSrFreeze.Text = "Yes";
+                    if (exemptType.Contains("R-FCV") || exemptType.Contains("R-LPV"))
+                    {
+                        lblWidower.Text = "Yes";
+                    }
+                    else lblWidower.Text = "No";
+
+                    if (exemptType.Contains("D-FCV") || exemptType.Contains("D-LPV"))
+                    {
+                        lblDisabled.Text = "Yes";
+                    }
+                    else lblDisabled.Text = "No";
+
+                    if (exemptType.Contains("8"))
+                    {
+                        lblSrFreeze.Text = "Yes";
+                    }
+                    else lblSrFreeze.Text = "No";
                 }
-                else lblSrFreeze.Text = "No";
+
+                drExemptions.Close();
             }
-            drExemptions.Close();
-            con.Close();
         }
 
         private void GetImprovements(string parcelID, string book, string map, string parcel, string split, string taxYear)
         {
             // *** Stored Procedure *** //
             string improvementsProcedure = "[dbo].[sp_Search_ImprDetailsTop_cama]";
-
-            SqlConnection con = new SqlConnection(connectionString);
-            con.Open();
-            SqlCommand cmdImprovements = new SqlCommand(improvementsProcedure, con);
-            SqlDataReader drImprovements;
-
-            //parcel improvements
-            cmdImprovements.CommandType = CommandType.StoredProcedure;
-            cmdImprovements.Parameters.Add("@BookNumber", SqlDbType.VarChar).Value = book;
-            cmdImprovements.Parameters.Add("@MapNumber", SqlDbType.VarChar).Value = map;
-            cmdImprovements.Parameters.Add("@ParcelNumber", SqlDbType.VarChar).Value = parcel;
-            cmdImprovements.Parameters.Add("@SplitNumber", SqlDbType.VarChar).Value = split;
-            cmdImprovements.Parameters.Add("@TaxYear", SqlDbType.VarChar).Value = taxYear;
-
-            // *** Improvements *** //
-            cmdImprovements.CommandTimeout = 0;
-            drImprovements = cmdImprovements.ExecuteReader();
-
-            var dataTable = new DataTable();
-            dataTable.Columns.Add("IMP", typeof(System.String));
-            dataTable.Columns.Add("ITEM", typeof(System.String));
-            dataTable.Columns.Add("CONST YEAR", typeof(System.String));
-            dataTable.Columns.Add("GRND FLR PERIM", typeof(System.String));
-            dataTable.Columns.Add("STORIES", typeof(System.String));
-            dataTable.Columns.Add("TOTAL SQ. FT.", typeof(System.String));
-            int count = 0;
-
-            while (drImprovements.Read())
+            using (SqlConnection con = new SqlConnection(connectionString))
             {
-                string des = drImprovements["description"].ToString();
-                string constYr = drImprovements["const_year"].ToString();
-                string grndPer = drImprovements["ground_per"].ToString();
-                string tFlr = drImprovements["total_flr"].ToString();
-                int impID = Convert.ToInt32(drImprovements["impr_id"]);
-                int storiesNum = Convert.ToInt32(drImprovements["story_cnt"]);
+                con.Open();
+                SqlCommand cmdImprovements = new SqlCommand(improvementsProcedure, con);
+                SqlDataReader drImprovements;
 
-                if (count < 4)
+                //parcel improvements
+                cmdImprovements.CommandType = CommandType.StoredProcedure;
+                cmdImprovements.Parameters.Add("@BookNumber", SqlDbType.VarChar).Value = book;
+                cmdImprovements.Parameters.Add("@MapNumber", SqlDbType.VarChar).Value = map;
+                cmdImprovements.Parameters.Add("@ParcelNumber", SqlDbType.VarChar).Value = parcel;
+                cmdImprovements.Parameters.Add("@SplitNumber", SqlDbType.VarChar).Value = split;
+                cmdImprovements.Parameters.Add("@TaxYear", SqlDbType.VarChar).Value = taxYear;
+
+                // *** Improvements *** //
+                cmdImprovements.CommandTimeout = 0;
+                drImprovements = cmdImprovements.ExecuteReader();
+
+                var dataTable = new DataTable();
+                dataTable.Columns.Add("IMP", typeof(System.String));
+                dataTable.Columns.Add("ITEM", typeof(System.String));
+                dataTable.Columns.Add("CONST YEAR", typeof(System.String));
+                dataTable.Columns.Add("GRND FLR PERIM", typeof(System.String));
+                dataTable.Columns.Add("STORIES", typeof(System.String));
+                dataTable.Columns.Add("TOTAL SQ. FT.", typeof(System.String));
+                int count = 0;
+
+                while (drImprovements.Read())
                 {
-                    dataTable.Rows.Add(impID, des, constYr, grndPer, storiesNum, tFlr);
-                }
-                count++;
-            }
-            gvImps.DataSource = dataTable;
-            gvImps.ShowHeader = true;
-            gvImps.DataBind();
+                    string des = drImprovements["description"].ToString();
+                    string constYr = drImprovements["const_year"].ToString();
+                    string grndPer = drImprovements["ground_per"].ToString();
+                    string tFlr = drImprovements["total_flr"].ToString();
+                    int impID = Convert.ToInt32(drImprovements["impr_id"]);
+                    int storiesNum = Convert.ToInt32(drImprovements["story_cnt"]);
 
-            drImprovements.Close();
-            con.Close();
+                    if (count < 4)
+                    {
+                        dataTable.Rows.Add(impID, des, constYr, grndPer, storiesNum, tFlr);
+                    }
+                    count++;
+                }
+                gvImps.DataSource = dataTable;
+                gvImps.ShowHeader = true;
+                gvImps.DataBind();
+
+                drImprovements.Close();
+            }
         }
 
         private void PopulateDdl()
         {
-            SqlConnection con = new SqlConnection(connectionString);
-            con.Open();
-            SqlCommand cmdTaxYear = con.CreateCommand();
-            cmdTaxYear.CommandType = CommandType.StoredProcedure;
-            cmdTaxYear.CommandText = "[dbo].[Sp_search_getcurrenttaxyear_cama]";
-            SqlDataReader drTaxYear = cmdTaxYear.ExecuteReader();
-
-            while (drTaxYear.Read())
+            using (SqlConnection con = new SqlConnection(connectionString))
             {
-                int getYear = Convert.ToInt32(drTaxYear[0].ToString());
-                DateTime setYear = new DateTime(getYear, 1, 1);
+                con.Open();
+                SqlCommand cmdTaxYear = con.CreateCommand();
+                cmdTaxYear.CommandType = CommandType.StoredProcedure;
+                cmdTaxYear.CommandText = "[dbo].[Sp_search_getcurrenttaxyear_cama]";
+                SqlDataReader drTaxYear = cmdTaxYear.ExecuteReader();
 
-                ddlTaxYear.Items.Insert(0, setYear.Year.ToString());                
-                ddlTaxYear.Items.Insert(1, setYear.AddYears(-1).Year.ToString());
-                ddlTaxYear.Items.Insert(2, setYear.AddYears(-2).Year.ToString());
-                ddlTaxYear.Items.Insert(3, setYear.AddYears(-3).Year.ToString());
-                ddlTaxYear.Items.Insert(4, setYear.AddYears(-4).Year.ToString());
-                ddlTaxYear.Items.Insert(5, setYear.AddYears(-5).Year.ToString());
-            }   
+                while (drTaxYear.Read())
+                {
+                    int getYear = Convert.ToInt32(drTaxYear[0].ToString());
+                    DateTime setYear = new DateTime(getYear, 1, 1);
+
+                    ddlTaxYear.Items.Insert(0, setYear.Year.ToString());
+                    ddlTaxYear.Items.Insert(1, setYear.AddYears(-1).Year.ToString());
+                    ddlTaxYear.Items.Insert(2, setYear.AddYears(-2).Year.ToString());
+                    ddlTaxYear.Items.Insert(3, setYear.AddYears(-3).Year.ToString());
+                    ddlTaxYear.Items.Insert(4, setYear.AddYears(-4).Year.ToString());
+                    ddlTaxYear.Items.Insert(5, setYear.AddYears(-5).Year.ToString());
+                }
+            }
         }
 
         protected void btnBack_Click(object sender, EventArgs e)

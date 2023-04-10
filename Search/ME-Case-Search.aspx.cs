@@ -69,28 +69,31 @@ namespace Search
             string fname = txtFirstName.Text.ToString().Trim();
             string lname = txtLastName.Text.ToString().Trim();
 
-            SqlConnection con = new SqlConnection(connectionString);
-            SqlCommand cmdName = new SqlCommand("spGetCaseByFirstLast", con);
-
-            cmdName.CommandType = CommandType.StoredProcedure;
-            cmdName.Parameters.Add("@FirstName", SqlDbType.VarChar).Value = fname;
-            cmdName.Parameters.Add("@LastName", SqlDbType.VarChar).Value = lname;
-
-            DataTable dt = new DataTable();
-            SqlDataAdapter adpt = new SqlDataAdapter(cmdName);
-            adpt.Fill(dt);
-
-            if (dt.Rows.Count <= 0)
+            using (SqlConnection con = new SqlConnection(connectionString))
             {
-                lblNameWarning.Text = "No Results Found";
-                lblNameWarning.Visible = true;
-                gvName.Visible = false;
-            }
-            else
-            {
-                gvName.DataSource = dt;
-                gvName.DataBind();
-                gvName.Visible = true;
+                con.Open();
+                SqlCommand cmdName = new SqlCommand("spGetCaseByFirstLast", con);
+
+                cmdName.CommandType = CommandType.StoredProcedure;
+                cmdName.Parameters.Add("@FirstName", SqlDbType.VarChar).Value = fname;
+                cmdName.Parameters.Add("@LastName", SqlDbType.VarChar).Value = lname;
+
+                DataTable dt = new DataTable();
+                SqlDataAdapter adpt = new SqlDataAdapter(cmdName);
+                adpt.Fill(dt);
+
+                if (dt.Rows.Count <= 0)
+                {
+                    lblNameWarning.Text = "No Results Found";
+                    lblNameWarning.Visible = true;
+                    gvName.Visible = false;
+                }
+                else
+                {
+                    gvName.DataSource = dt;
+                    gvName.DataBind();
+                    gvName.Visible = true;
+                }
             }
         }
 
@@ -98,32 +101,35 @@ namespace Search
         {
             string caseNumber = txtCaseNum.Text.ToString().Trim();
 
-            SqlConnection con = new SqlConnection(connectionString);
-            SqlCommand cmdNum = new SqlCommand("spGetCaseByNumber", con);
-
-            cmdNum.CommandType = CommandType.StoredProcedure;
-            cmdNum.Parameters.Add("@CaseNum", SqlDbType.VarChar).Value = caseNumber;
-
-            DataTable dt = new DataTable();
-            SqlDataAdapter adpt = new SqlDataAdapter(cmdNum);
-            adpt.Fill(dt);
-
-            if (dt.Rows.Count <= 0)
+            using (SqlConnection con = new SqlConnection(connectionString))
             {
-                lblCaseNumWarning.Text = "No Results Found";
-                lblCaseNumWarning.Visible = true;
-                gvCaseNum.Visible = false;
-            }
-            else
-            {
+                con.Open();
+                SqlCommand cmdNum = new SqlCommand("spGetCaseByNumber", con);
+
+                cmdNum.CommandType = CommandType.StoredProcedure;
+                cmdNum.Parameters.Add("@CaseNum", SqlDbType.VarChar).Value = caseNumber;
+
+                DataTable dt = new DataTable();
+                SqlDataAdapter adpt = new SqlDataAdapter(cmdNum);
+                adpt.Fill(dt);
+
+                if (dt.Rows.Count <= 0)
+                {
+                    lblCaseNumWarning.Text = "No Results Found";
+                    lblCaseNumWarning.Visible = true;
+                    gvCaseNum.Visible = false;
+                }
+                else
+                {
+                    gvCaseNum.DataSource = dt;
+                    gvCaseNum.DataBind();
+                    gvCaseNum.Visible = true;
+                }
+
                 gvCaseNum.DataSource = dt;
                 gvCaseNum.DataBind();
                 gvCaseNum.Visible = true;
             }
-
-            gvCaseNum.DataSource = dt;
-            gvCaseNum.DataBind();
-            gvCaseNum.Visible = true;
         }
 
         ///<Summary>

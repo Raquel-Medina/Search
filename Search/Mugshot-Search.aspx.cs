@@ -40,15 +40,18 @@ namespace Search
 
         private void PopulateGridView()
         {
-            SqlConnection con = new SqlConnection(connectionString);
-            SqlCommand cmd = new SqlCommand("spGetMugShotInfo", con);
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand("spGetMugShotInfo", con);
 
-            DataTable dt = new DataTable();
-            SqlDataAdapter adpt = new SqlDataAdapter(cmd);
-            adpt.Fill(dt);
+                DataTable dt = new DataTable();
+                SqlDataAdapter adpt = new SqlDataAdapter(cmd);
+                adpt.Fill(dt);
 
-            gvInmates.DataSource = dt;
-            gvInmates.DataBind();
+                gvInmates.DataSource = dt;
+                gvInmates.DataBind();
+            }
         }
 
         protected void gv_PageIndexChanging(object sender, GridViewPageEventArgs e)

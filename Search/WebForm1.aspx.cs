@@ -160,108 +160,120 @@ namespace Search
 
         private void PopulateGridView_EstName()
         {
-            SqlConnection con = new SqlConnection(connectionString);
-            SqlCommand cmd = new SqlCommand("spEHInsp_EstByNameNew", con);
-
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Add("@Name", SqlDbType.VarChar).Value = "%" + txtEstName.Text.ToString().Trim() + "%";
-            cmd.Parameters.Add("@Year", SqlDbType.VarChar).Value = ddlEstNameYear.SelectedValue.ToString();
-            cmd.Parameters.Add("@SST", SqlDbType.VarChar).Value = "%";
-
-            DataTable dt = new DataTable();
-            SqlDataAdapter adpt = new SqlDataAdapter(cmd);
-            adpt.Fill(dt);
-
-            if (dt.Rows.Count <= 0)
+            using (SqlConnection con = new SqlConnection(connectionString))
             {
-                lblEstNameWarning.Text = "No Results Found";
-                lblEstNameWarning.Visible = true;
-            }
-            else
-            {
-                gvEstName.DataSource = dt;
-                gvEstName.DataBind();
+                con.Open();
+                SqlCommand cmd = new SqlCommand("spEHInsp_EstByNameNew", con);
+
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@Name", SqlDbType.VarChar).Value = "%" + txtEstName.Text.ToString().Trim() + "%";
+                cmd.Parameters.Add("@Year", SqlDbType.VarChar).Value = ddlEstNameYear.SelectedValue.ToString();
+                cmd.Parameters.Add("@SST", SqlDbType.VarChar).Value = "%";
+
+                DataTable dt = new DataTable();
+                SqlDataAdapter adpt = new SqlDataAdapter(cmd);
+                adpt.Fill(dt);
+
+                if (dt.Rows.Count <= 0)
+                {
+                    lblEstNameWarning.Text = "No Results Found";
+                    lblEstNameWarning.Visible = true;
+                }
+                else
+                {
+                    gvEstName.DataSource = dt;
+                    gvEstName.DataBind();
+                }
             }
         }
 
         private void PopulateGridView_PermitNum()
         {
-            SqlConnection con = new SqlConnection(connectionString);
-            SqlCommand cmd = new SqlCommand("spEHInsp_EstByPermitNew", con);
-
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Add("@Permit", SqlDbType.VarChar).Value = txtPermitNum.Text.ToString().Trim();
-            cmd.Parameters.Add("@Year", SqlDbType.VarChar).Value = ddlPermitNumYear.SelectedValue.ToString();
-            cmd.Parameters.Add("@SST", SqlDbType.VarChar).Value = "%";
-
-
-            cmd.CommandTimeout = 0;
-            DataTable dt = new DataTable();
-            SqlDataAdapter adpt = new SqlDataAdapter(cmd);
-            adpt.Fill(dt);
-
-            if (dt.Rows.Count <= 0)
+            using (SqlConnection con = new SqlConnection(connectionString))
             {
-                lblPermitNumWarning.Text = "No Results Found";
-                lblPermitNumWarning.Visible = true;
-            }
-            else
-            {
-                gvPermitNum.DataSource = dt;
-                gvPermitNum.DataBind();
+                con.Open();
+                SqlCommand cmd = new SqlCommand("spEHInsp_EstByPermitNew", con);
+
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@Permit", SqlDbType.VarChar).Value = txtPermitNum.Text.ToString().Trim();
+                cmd.Parameters.Add("@Year", SqlDbType.VarChar).Value = ddlPermitNumYear.SelectedValue.ToString();
+                cmd.Parameters.Add("@SST", SqlDbType.VarChar).Value = "%";
+
+
+                cmd.CommandTimeout = 0;
+                DataTable dt = new DataTable();
+                SqlDataAdapter adpt = new SqlDataAdapter(cmd);
+                adpt.Fill(dt);
+
+                if (dt.Rows.Count <= 0)
+                {
+                    lblPermitNumWarning.Text = "No Results Found";
+                    lblPermitNumWarning.Visible = true;
+                }
+                else
+                {
+                    gvPermitNum.DataSource = dt;
+                    gvPermitNum.DataBind();
+                }
             }
         }
 
         private void PopulateGridView_RatingClass()
         {
-            SqlConnection con = new SqlConnection(connectionString);
-            SqlCommand cmd = new SqlCommand("spEHInsp_EstByRatingNew", con);
-
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Add("@Rating", SqlDbType.VarChar).Value = ddlRatingClass.SelectedValue.ToString();
-            cmd.Parameters.Add("@Year", SqlDbType.VarChar).Value = ddlRatingClassYear.SelectedValue.ToString();
-            cmd.Parameters.Add("@SST", SqlDbType.VarChar).Value = "%";
-
-            DataTable dt = new DataTable();
-            SqlDataAdapter adpt = new SqlDataAdapter(cmd);
-            adpt.Fill(dt);
-
-            if (dt.Rows.Count <= 0)
+            using (SqlConnection con = new SqlConnection(connectionString))
             {
-                lblRatingClassWarning.Text = "No Results Found";
-                lblRatingClassWarning.Visible = true;
-            }
-            else
-            {
-                gvRatingClass.DataSource = dt;
-                gvRatingClass.DataBind();
+                con.Open();
+                SqlCommand cmd = new SqlCommand("spEHInsp_EstByRatingNew", con);
+
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@Rating", SqlDbType.VarChar).Value = ddlRatingClass.SelectedValue.ToString();
+                cmd.Parameters.Add("@Year", SqlDbType.VarChar).Value = ddlRatingClassYear.SelectedValue.ToString();
+                cmd.Parameters.Add("@SST", SqlDbType.VarChar).Value = "%";
+
+                DataTable dt = new DataTable();
+                SqlDataAdapter adpt = new SqlDataAdapter(cmd);
+                adpt.Fill(dt);
+
+                if (dt.Rows.Count <= 0)
+                {
+                    lblRatingClassWarning.Text = "No Results Found";
+                    lblRatingClassWarning.Visible = true;
+                }
+                else
+                {
+                    gvRatingClass.DataSource = dt;
+                    gvRatingClass.DataBind();
+                }
             }
         }
 
         private void PopulateGridView_CityTown()
         {
-            SqlConnection con = new SqlConnection(connectionString);
-            SqlCommand cmd = new SqlCommand("spEHInsp_EstByCityWithMonthNew", con);
-
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Add("@City", SqlDbType.VarChar).Value = ddlCityTown.SelectedValue.ToString();
-            cmd.Parameters.Add("@Year", SqlDbType.VarChar).Value = ddlCityTownYear.SelectedValue.ToString();
-            cmd.Parameters.Add("@Month", SqlDbType.VarChar).Value = ddlCityTownMonth.SelectedValue;
-            cmd.Parameters.Add("@SST", SqlDbType.VarChar).Value = "%";
-
-            DataTable dt = new DataTable();
-            SqlDataAdapter adpt = new SqlDataAdapter(cmd);
-            adpt.Fill(dt);
-
-            if (dt.Rows.Count <= 0)
+            using (SqlConnection con = new SqlConnection(connectionString))
             {
-                lblCityTownWarning.Text = "No Results Found";
-                lblCityTownWarning.Visible = true;
-            }
-            else
-            {
-                gvCityTown.DataSource = dt;
-                gvCityTown.DataBind();
+                con.Open();
+                SqlCommand cmd = new SqlCommand("spEHInsp_EstByCityWithMonthNew", con);
+
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@City", SqlDbType.VarChar).Value = ddlCityTown.SelectedValue.ToString();
+                cmd.Parameters.Add("@Year", SqlDbType.VarChar).Value = ddlCityTownYear.SelectedValue.ToString();
+                cmd.Parameters.Add("@Month", SqlDbType.VarChar).Value = ddlCityTownMonth.SelectedValue;
+                cmd.Parameters.Add("@SST", SqlDbType.VarChar).Value = "%";
+
+                DataTable dt = new DataTable();
+                SqlDataAdapter adpt = new SqlDataAdapter(cmd);
+                adpt.Fill(dt);
+
+                if (dt.Rows.Count <= 0)
+                {
+                    lblCityTownWarning.Text = "No Results Found";
+                    lblCityTownWarning.Visible = true;
+                }
+                else
+                {
+                    gvCityTown.DataSource = dt;
+                    gvCityTown.DataBind();
+                }
             }
         }
 

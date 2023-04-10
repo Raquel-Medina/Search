@@ -26,34 +26,37 @@ namespace Search
         {
             string caseNum = Request.QueryString["cn"];
             string queryDetails = "SELECT * FROM CaseSearch WHERE CaseNum LIKE '" + caseNum + "' ORDER BY [CaseNum] DESC";
-            
-            SqlConnection con = new SqlConnection(connectionString);
-            SqlCommand cmdDetails = new SqlCommand(queryDetails, con);
-            SqlDataAdapter adpt = new SqlDataAdapter(cmdDetails);
 
-            DataSet ds = new DataSet();
-            adpt.Fill(ds);
-            object[] rowVals = new object[3];
-
-            foreach (DataRow dr in ds.Tables[0].Rows) 
+            using (SqlConnection con = new SqlConnection(connectionString))
             {
-                string other = dr["Other"].ToString();
+                con.Open();
+                SqlCommand cmdDetails = new SqlCommand(queryDetails, con);
+                SqlDataAdapter adpt = new SqlDataAdapter(cmdDetails);
 
-                lblCaseNum.Text = dr["CaseNum"].ToString();
-                lblName.Text = dr["FName"].ToString() + " " + dr["LName"].ToString();
-                lblRace.Text = dr["Race"].ToString();
-                lblEthnicity.Text = dr["Ethnicity"].ToString();
-                lblDod.Text = dr["DOD"].ToString();
-                lblAge.Text = dr["Age"].ToString();
-                lblCod.Text = dr["COD"].ToString();
+                DataSet ds = new DataSet();
+                adpt.Fill(ds);
+                object[] rowVals = new object[3];
 
-                if (other != "")
+                foreach (DataRow dr in ds.Tables[0].Rows)
                 {
-                    lblOther.Text = other;
+                    string other = dr["Other"].ToString();
+
+                    lblCaseNum.Text = dr["CaseNum"].ToString();
+                    lblName.Text = dr["FName"].ToString() + " " + dr["LName"].ToString();
+                    lblRace.Text = dr["Race"].ToString();
+                    lblEthnicity.Text = dr["Ethnicity"].ToString();
+                    lblDod.Text = dr["DOD"].ToString();
+                    lblAge.Text = dr["Age"].ToString();
+                    lblCod.Text = dr["COD"].ToString();
+
+                    if (other != "")
+                    {
+                        lblOther.Text = other;
+                    }
+                    else { lblOther.Text = "Not Given"; }
+
+                    lblMod.Text = dr["MOD"].ToString();
                 }
-                else { lblOther.Text = "Not Given"; }
-                
-                lblMod.Text = dr["MOD"].ToString();
             }
         }
 
