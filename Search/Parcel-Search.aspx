@@ -53,10 +53,10 @@
                     <h5 class="header-title">OWNERS NAME</h5>
                     <asp:Panel ID="pnlOwner" DefaultButton="btnSearchOwner" runat="server">
                         <div class="row">
-                        <div class="col-10">
+                        <div class="col-lg-10 col-sm-12 align-self-center pb-2">
                             <asp:TextBox ID="txtOwner" CssClass="form-control" placeholder="LAST/FIRST NAME" datalpignore="true" runat="server" />
                         </div>
-                        <div class="col-2">
+                        <div class="col-lg-2 col-sm-12 align-self-center pb-2">
                             <asp:Button ID="btnSearchOwner" Text="Search" CssClass="btn button-primary button-responsive" OnClick="btn_Click" runat="server" />
                         </div>
                     </div>
@@ -84,10 +84,10 @@
                     <h5 class="header-title">PROPERTY ADDRESS</h5>
                     <asp:Panel ID="pnlAddress" DefaultButton="btnSearchAddress" runat="server">
                         <div class="row">
-                        <div class="col-2">
+                        <div class="col-lg-2 col-sm-12 align-self-center pb-2">
                             <asp:TextBox ID="txtNumber" CssClass="form-control" placeholder="STREET NUMBER" datalpignore="true" runat="server" />
                         </div>
-                        <div class="col-2">
+                        <div class="col-lg-2 col-sm-12 align-self-center pb-2">
                             <asp:DropDownList ID="ddlDirection" CssClass="form-control" runat="server">
                                 <asp:ListItem Value="">DIRECTION</asp:ListItem>
                                 <asp:ListItem Value="N">North</asp:ListItem>
@@ -96,10 +96,10 @@
                                 <asp:ListItem Value="W">West</asp:ListItem>
                             </asp:DropDownList>
                         </div>
-                        <div class="col-4">
+                        <div class="col-lg-4 col-sm-12 align-self-center pb-2">
                             <asp:TextBox ID="txtStreetName" CssClass="form-control" placeholder="STREET NAME" datalpignore="true" runat="server" />
                         </div>
-                        <div class="col-2">
+                        <div class="col-lg-2 col-sm-12 align-self-center pb-2">
                             <asp:DropDownList ID="ddlSuffix" CssClass="form-control" placeholder="SUFFIX" runat="server">
                                 <asp:ListItem Value="">SUFFIX</asp:ListItem>
                                 <asp:ListItem>AVE</asp:ListItem>
@@ -121,7 +121,7 @@
                                 <asp:ListItem>WAY</asp:ListItem>
                             </asp:DropDownList>
                         </div>
-                        <div class="col-2">
+                        <div class="col-lg-2 col-sm-12 align-self-center pb-2">
                             <asp:Button ID="btnSearchAddress" Text="Search" CssClass="btn button-primary button-responsive" OnClick="btn_Click" runat="server" />
                         </div>
                     </div>
@@ -149,16 +149,16 @@
                     <h5 class="header-title">PARCEL NUMBER</h5>
                     <asp:Panel ID="pnlParcel" DefaultButton="btnSearchParcel" runat="server">
                         <div class="row">
-                        <div class="col-3">
+                        <div class="col-lg-3 col-sm-12 align-self-center pb-2">
                             <asp:TextBox ID="txtBook" CssClass="form-control" placeholder="BOOK" MaxLength="3" datalpignore="true" onkeyup="moveFocus(this, 'txtMap')" runat="server" />
                         </div>
-                        <div class="col-2">
+                        <div class="col-lg-2 col-sm-12 align-self-center pb-2">
                             <asp:TextBox ID="txtMap" CssClass="form-control" placeholder="MAP" MaxLength="2" datalpignore="true" onkeyup="moveFocus(this, 'txtParcel')" runat="server" />
                         </div>
-                        <div class="col-3">
+                        <div class="col-lg-3 col-sm-12 align-self-center pb-2">
                             <asp:TextBox ID="txtParcel" CssClass="form-control" placeholder="PARCEL" MaxLength="3" datalpignore="true" onkeyup="moveFocus(this, 'ddlSplit')" runat="server" />
                         </div>
-                        <div class="col-2">
+                        <div class="col-lg-2 col-sm-12 align-self-center pb-2">
                             <asp:DropDownList ID="ddlSplit" CssClass="form-control" runat="server">
                                 <asp:ListItem>SPLIT</asp:ListItem>
                                 <asp:ListItem>0</asp:ListItem>
@@ -190,7 +190,7 @@
                                 <asp:ListItem>Z</asp:ListItem>
                             </asp:DropDownList>
                         </div>
-                        <div class="col-2">
+                        <div class="col-2 align-self-center pb-2">
                             <asp:Button ID="btnSearchParcel" Text="Search" CssClass="btn button-primary button-responsive" OnClick="btn_Click" runat="server" />
                         </div>
                     </div>
@@ -218,10 +218,10 @@
                     <h5 class="header-title">SUBDIVISION NAME</h5>
                     <asp:Panel ID="pnlSubdivision" DefaultButton="btnSearchSubdivision" runat="server">
                         <div class="row">
-                            <div class="col-10">
+                            <div class="col-lg-10 col-sm-12 align-self-center pb-2">
                                 <asp:TextBox ID="txtSubdivision" CssClass="form-control" placeholder="SUBDIVISION NAME" datalpignore="true" runat="server" />
                             </div>
-                            <div class="col-2">
+                            <div class="col-2 align-self-center pb-2">
                                 <asp:Button ID="btnSearchSubdivision" Text="Search" CssClass="btn button-primary button-responsive" OnClick="btn_Click" runat="server" />
                             </div>
                         </div>
@@ -249,7 +249,7 @@
                     <h5 class="header-title">SECTION/TOWNSHIP/RANGE</h5>
                     <asp:Panel ID="pnlSTR" DefaultButton="btnSearchSTR" runat="server">
                         <div class="row">
-                            <div class="col-3">
+                            <div class="col-lg-3 col-sm-12 align-self-center pb-2">
                                 <asp:DropDownList ID="ddlSection" CssClass="form-control" runat="server">
                                     <asp:ListItem>SECTION</asp:ListItem>
                                     <asp:ListItem>01</asp:ListItem>
@@ -290,7 +290,7 @@
                                     <asp:ListItem>36</asp:ListItem>
                                 </asp:DropDownList>
                             </div>
-                            <div class="col-3">
+                            <div class="col-lg-3 col-sm-12 align-self-center pb-2">
                                 <asp:DropDownList ID="ddlTownship" CssClass="form-control" runat="server">
                                     <asp:ListItem>TOWNSHIP</asp:ListItem>
                                     <asp:ListItem>01N</asp:ListItem>
@@ -306,7 +306,7 @@
                                     <asp:ListItem>10S</asp:ListItem>
                                 </asp:DropDownList>
                             </div>
-                            <div class="col-4">
+                            <div class="col-lg-4 col-sm-12 align-self-center pb-2">
                                 <asp:DropDownList ID="ddlRange" CssClass="form-control" runat="server">
                                     <asp:ListItem>RANGE</asp:ListItem>
                                     <asp:ListItem>02E</asp:ListItem>
@@ -328,7 +328,7 @@
                                     <asp:ListItem>18E</asp:ListItem>
                                 </asp:DropDownList>
                             </div>
-                            <div class="col-2">
+                            <div class="col-2 align-self-center pb-2">
                                 <asp:Button ID="btnSearchSTR" Text="Search" CssClass="btn button-primary button-responsive" OnClick="btn_Click" runat="server" />
                             </div>
                         </div>
@@ -356,16 +356,16 @@
                     <h5 class="header-title">CABINET/SLIDE/LOT</h5>
                     <asp:Panel ID="pnlCabSlideLot" DefaultButton="btnSearchCabSlideLot" runat="server">
                         <div class="row">
-                            <div class="col-3">
+                            <div class="col-lg-3 col-sm-12 align-self-center pb-2">
                                 <asp:TextBox ID="txtCabinet" CssClass="form-control" placeholder="CABINET" runat="server" />
                             </div>
-                            <div class="col-3">
+                            <div class="col-lg-3 col-sm-12 align-self-center pb-2">
                                 <asp:TextBox ID="txtSlide" CssClass="form-control" placeholder="SLIDE" runat="server" />
                             </div>
-                            <div class="col-4">
+                            <div class="col-lg-4 col-sm-12 align-self-center pb-2">
                                 <asp:TextBox ID="txtLot" CssClass="form-control" placeholder="LOT" runat="server" />
                             </div>
-                            <div class="col-2">
+                            <div class="col-2 align-self-center pb-2">
                                 <asp:Button ID="btnSearchCabSlideLot" Text="Search" CssClass="btn button-primary button-responsive" OnClick="btn_Click" runat="server" />
                             </div>
                         </div>

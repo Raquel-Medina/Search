@@ -26,7 +26,7 @@
             </div>
             <div class="text-center">
                 <h5 class="header-title">Message</h5>
-                <p>Invalid parcel number.</p>
+                <p>Execution Timeout Expired. The timeout period elapsed prior to completion of the operation or the server is not responding.</p>
                 <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Parcel-Search.aspx">Return to Search Page</asp:HyperLink>
             </div>
         </div>
