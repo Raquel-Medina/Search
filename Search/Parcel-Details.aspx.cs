@@ -42,9 +42,7 @@ namespace Search
 
         private void GetParcelInfo()
         {
-            //string parcelID = Request.QueryString["parcel_ID"];
-            //string parcelID = "nap";
-            string parcelID = "103070310";
+            string parcelID = Request.QueryString["parcel_ID"];
             string book = "";
             string map = "";
             string parcel = "";
