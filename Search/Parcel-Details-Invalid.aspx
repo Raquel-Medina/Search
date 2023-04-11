@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Parcel-Details-Error.aspx.cs" Inherits="Search.Parcel_Details_Error" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Parcel-Details-Invalid.aspx.cs" Inherits="Search.Parcel_Details_Invalid" %>
 
 <!DOCTYPE html>
 

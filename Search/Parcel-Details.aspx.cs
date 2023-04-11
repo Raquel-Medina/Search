@@ -73,12 +73,7 @@ namespace Search
             }
             else
             {
-                //Response.Redirect("Parcel-Details-Error.aspx");
-                //MessageBox.Show("Invalid Parcel Number");
-                if(MessageBox.Show("Invalid Parcel Number", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.OK)
-                {
-                    Response.Redirect("Parcel-Search.aspx");
-                }
+                Response.Redirect("Parcel-Details-Error.aspx");
             }
         }
 
@@ -326,8 +321,6 @@ namespace Search
                 cmdExemptions.Parameters.Add("@SplitNumber", SqlDbType.VarChar).Value = split;
                 cmdExemptions.Parameters.Add("@TaxYear", SqlDbType.VarChar).Value = taxYear;
 
-                cmdExemptions.CommandTimeout = 0;
-
                 // *** Exemptions *** //
                 try
                 {
@@ -390,7 +383,6 @@ namespace Search
                 cmdImprovements.Parameters.Add("@TaxYear", SqlDbType.VarChar).Value = taxYear;
 
                 // *** Improvements *** //
-                cmdImprovements.CommandTimeout = 0;
                 try
                 {
                     drImprovements = cmdImprovements.ExecuteReader();
