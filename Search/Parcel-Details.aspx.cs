@@ -9,6 +9,7 @@ using System.Windows;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace Search
 {
@@ -41,27 +42,46 @@ namespace Search
 
         private void GetParcelInfo()
         {
-            string parcelID = Request.QueryString["parcel_ID"];
-            string book = parcelID.Substring(0, 3);
-            string map = parcelID.Substring(3, 2);
-            string parcel = parcelID.Substring(5, 3);
-            string split = parcelID.Substring(8, 1);
+            //string parcelID = Request.QueryString["parcel_ID"];
+            //string parcelID = "nap";
+            string parcelID = "103070310";
+            string book = "";
+            string map = "";
+            string parcel = "";
+            string split = "";
             string taxYear;
 
-            if (Request.QueryString["ty"] != null)
+            if (parcelID.Length == 9)
             {
-                taxYear = Request.QueryString["ty"];
-                ddlTaxYear.SelectedValue = taxYear;
+                book = parcelID.Substring(0, 3);
+                map = parcelID.Substring(3, 2);
+                parcel = parcelID.Substring(5, 3);
+                split = parcelID.Substring(8, 1);
+
+                if (Request.QueryString["ty"] != null)
+                {
+                    taxYear = Request.QueryString["ty"];
+                    ddlTaxYear.SelectedValue = taxYear;
+                }
+                else
+                {
+                    taxYear = ddlTaxYear.Text;
+                }
+
+                GetDetails(parcelID, book, map, parcel, split, taxYear);
+                GetDocuments(parcelID, book, map, parcel, split);
+                GetExemptions(parcelID, book, map, parcel, split, taxYear);
+                GetImprovements(parcelID, book, map, parcel, split, taxYear);
             }
             else
             {
-                taxYear = ddlTaxYear.Text;
+                //Response.Redirect("Parcel-Details-Error.aspx");
+                //MessageBox.Show("Invalid Parcel Number");
+                if(MessageBox.Show("Invalid Parcel Number", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.OK)
+                {
+                    Response.Redirect("Parcel-Search.aspx");
+                }
             }
-
-            GetDetails(parcelID, book, map, parcel, split, taxYear);
-            GetDocuments(parcelID, book, map, parcel, split);
-            GetExemptions(parcelID, book, map, parcel, split, taxYear);
-            GetImprovements(parcelID, book, map, parcel, split, taxYear);
         }
 
         private void GetDetails(string parcelID, string book, string map, string parcel, string split, string taxYear)
@@ -308,39 +328,48 @@ namespace Search
                 cmdExemptions.Parameters.Add("@SplitNumber", SqlDbType.VarChar).Value = split;
                 cmdExemptions.Parameters.Add("@TaxYear", SqlDbType.VarChar).Value = taxYear;
 
-                // *** Exemptions *** //
                 cmdExemptions.CommandTimeout = 0;
-                drExemptions = cmdExemptions.ExecuteReader();
-                string exemptType;
-                while (drExemptions.Read())
+
+                // *** Exemptions *** //
+                try
                 {
-                    exemptType = drExemptions["exempt_typ"].ToString();
-                    if (exemptType.Contains("W-FCV") || exemptType.Contains("W-LPV"))
-                    {
-                        lblWidow.Text = "Yes";
-                    }
-                    else lblWidow.Text = "No";
+                    drExemptions = cmdExemptions.ExecuteReader();
+                    string exemptType;
 
-                    if (exemptType.Contains("R-FCV") || exemptType.Contains("R-LPV"))
+                    while (drExemptions.Read())
                     {
-                        lblWidower.Text = "Yes";
-                    }
-                    else lblWidower.Text = "No";
+                        exemptType = drExemptions["exempt_typ"].ToString();
+                        if (exemptType.Contains("W-FCV") || exemptType.Contains("W-LPV"))
+                        {
+                            lblWidow.Text = "Yes";
+                        }
+                        else lblWidow.Text = "No";
 
-                    if (exemptType.Contains("D-FCV") || exemptType.Contains("D-LPV"))
-                    {
-                        lblDisabled.Text = "Yes";
-                    }
-                    else lblDisabled.Text = "No";
+                        if (exemptType.Contains("R-FCV") || exemptType.Contains("R-LPV"))
+                        {
+                            lblWidower.Text = "Yes";
+                        }
+                        else lblWidower.Text = "No";
 
-                    if (exemptType.Contains("8"))
-                    {
-                        lblSrFreeze.Text = "Yes";
+                        if (exemptType.Contains("D-FCV") || exemptType.Contains("D-LPV"))
+                        {
+                            lblDisabled.Text = "Yes";
+                        }
+                        else lblDisabled.Text = "No";
+
+                        if (exemptType.Contains("8"))
+                        {
+                            lblSrFreeze.Text = "Yes";
+                        }
+                        else lblSrFreeze.Text = "No";
                     }
-                    else lblSrFreeze.Text = "No";
+
+                    drExemptions.Close();
                 }
-
-                drExemptions.Close();
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
 
@@ -364,37 +393,44 @@ namespace Search
 
                 // *** Improvements *** //
                 cmdImprovements.CommandTimeout = 0;
-                drImprovements = cmdImprovements.ExecuteReader();
-
-                var dataTable = new DataTable();
-                dataTable.Columns.Add("IMP", typeof(System.String));
-                dataTable.Columns.Add("ITEM", typeof(System.String));
-                dataTable.Columns.Add("CONST YEAR", typeof(System.String));
-                dataTable.Columns.Add("GRND FLR PERIM", typeof(System.String));
-                dataTable.Columns.Add("STORIES", typeof(System.String));
-                dataTable.Columns.Add("TOTAL SQ. FT.", typeof(System.String));
-                int count = 0;
-
-                while (drImprovements.Read())
+                try
                 {
-                    string des = drImprovements["description"].ToString();
-                    string constYr = drImprovements["const_year"].ToString();
-                    string grndPer = drImprovements["ground_per"].ToString();
-                    string tFlr = drImprovements["total_flr"].ToString();
-                    int impID = Convert.ToInt32(drImprovements["impr_id"]);
-                    int storiesNum = Convert.ToInt32(drImprovements["story_cnt"]);
+                    drImprovements = cmdImprovements.ExecuteReader();
 
-                    if (count < 4)
+                    var dataTable = new DataTable();
+                    dataTable.Columns.Add("IMP", typeof(System.String));
+                    dataTable.Columns.Add("ITEM", typeof(System.String));
+                    dataTable.Columns.Add("CONST YEAR", typeof(System.String));
+                    dataTable.Columns.Add("GRND FLR PERIM", typeof(System.String));
+                    dataTable.Columns.Add("STORIES", typeof(System.String));
+                    dataTable.Columns.Add("TOTAL SQ. FT.", typeof(System.String));
+                    int count = 0;
+
+                    while (drImprovements.Read())
                     {
-                        dataTable.Rows.Add(impID, des, constYr, grndPer, storiesNum, tFlr);
-                    }
-                    count++;
-                }
-                gvImps.DataSource = dataTable;
-                gvImps.ShowHeader = true;
-                gvImps.DataBind();
+                        string des = drImprovements["description"].ToString();
+                        string constYr = drImprovements["const_year"].ToString();
+                        string grndPer = drImprovements["ground_per"].ToString();
+                        string tFlr = drImprovements["total_flr"].ToString();
+                        int impID = Convert.ToInt32(drImprovements["impr_id"]);
+                        int storiesNum = Convert.ToInt32(drImprovements["story_cnt"]);
 
-                drImprovements.Close();
+                        if (count < 4)
+                        {
+                            dataTable.Rows.Add(impID, des, constYr, grndPer, storiesNum, tFlr);
+                        }
+                        count++;
+                    }
+                    gvImps.DataSource = dataTable;
+                    gvImps.ShowHeader = true;
+                    gvImps.DataBind();
+
+                    drImprovements.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
 

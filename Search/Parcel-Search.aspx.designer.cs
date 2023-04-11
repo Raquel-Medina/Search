@@ -7,29 +7,22 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Search {
-    
-    
-    public partial class Parcel_Search {
-        
+namespace Search
+{
+
+
+    public partial class Parcel_Search
+    {
+
         /// <summary>
-        /// ddlSearchType control.
+        /// pnlOwner control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlSearchType;
-        
-        /// <summary>
-        /// searchName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl searchName;
-        
+        protected global::System.Web.UI.WebControls.Panel pnlOwner;
+
         /// <summary>
         /// txtOwner control.
         /// </summary>
@@ -38,7 +31,7 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtOwner;
-        
+
         /// <summary>
         /// btnSearchOwner control.
         /// </summary>
@@ -47,7 +40,7 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSearchOwner;
-        
+
         /// <summary>
         /// lblSearchOwnerWarning control.
         /// </summary>
@@ -56,7 +49,7 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblSearchOwnerWarning;
-        
+
         /// <summary>
         /// gvSearchName control.
         /// </summary>
@@ -65,16 +58,16 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvSearchName;
-        
+
         /// <summary>
-        /// searchAddress control.
+        /// pnlAddress control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl searchAddress;
-        
+        protected global::System.Web.UI.WebControls.Panel pnlAddress;
+
         /// <summary>
         /// txtNumber control.
         /// </summary>
@@ -83,7 +76,7 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNumber;
-        
+
         /// <summary>
         /// ddlDirection control.
         /// </summary>
@@ -92,7 +85,7 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlDirection;
-        
+
         /// <summary>
         /// txtStreetName control.
         /// </summary>
@@ -101,7 +94,7 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtStreetName;
-        
+
         /// <summary>
         /// ddlSuffix control.
         /// </summary>
@@ -110,7 +103,7 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlSuffix;
-        
+
         /// <summary>
         /// btnSearchAddress control.
         /// </summary>
@@ -119,7 +112,7 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSearchAddress;
-        
+
         /// <summary>
         /// lblSearchAddressWarning control.
         /// </summary>
@@ -128,7 +121,7 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblSearchAddressWarning;
-        
+
         /// <summary>
         /// gvSearchAddress control.
         /// </summary>
@@ -137,16 +130,16 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvSearchAddress;
-        
+
         /// <summary>
-        /// searchParcel control.
+        /// pnlParcel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl searchParcel;
-        
+        protected global::System.Web.UI.WebControls.Panel pnlParcel;
+
         /// <summary>
         /// txtBook control.
         /// </summary>
@@ -155,7 +148,7 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtBook;
-        
+
         /// <summary>
         /// txtMap control.
         /// </summary>
@@ -164,7 +157,7 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtMap;
-        
+
         /// <summary>
         /// txtParcel control.
         /// </summary>
@@ -173,7 +166,7 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtParcel;
-        
+
         /// <summary>
         /// ddlSplit control.
         /// </summary>
@@ -182,7 +175,7 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlSplit;
-        
+
         /// <summary>
         /// btnSearchParcel control.
         /// </summary>
@@ -191,7 +184,7 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSearchParcel;
-        
+
         /// <summary>
         /// lblSearchParcelWarning control.
         /// </summary>
@@ -200,7 +193,7 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblSearchParcelWarning;
-        
+
         /// <summary>
         /// gvSearchParcel control.
         /// </summary>
@@ -209,142 +202,16 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvSearchParcel;
-        
+
         /// <summary>
-        /// searchSTR control.
+        /// pnlSubdivision control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl searchSTR;
-        
-        /// <summary>
-        /// ddlSection control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlSection;
-        
-        /// <summary>
-        /// ddlTownship control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlTownship;
-        
-        /// <summary>
-        /// ddlRange control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlRange;
-        
-        /// <summary>
-        /// btnSearchSTR control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSearchSTR;
-        
-        /// <summary>
-        /// lblSearchSTRWarning control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSearchSTRWarning;
-        
-        /// <summary>
-        /// gvSearchSTR control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvSearchSTR;
-        
-        /// <summary>
-        /// searchCSL control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl searchCSL;
-        
-        /// <summary>
-        /// txtCabinet control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCabinet;
-        
-        /// <summary>
-        /// txtSlide control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSlide;
-        
-        /// <summary>
-        /// txtLot control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtLot;
-        
-        /// <summary>
-        /// btnSearchCabSlideLot control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSearchCabSlideLot;
-        
-        /// <summary>
-        /// lblSearchCabSlideLotWarning control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSearchCabSlideLotWarning;
-        
-        /// <summary>
-        /// gvSearchCabSlideLot control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvSearchCabSlideLot;
-        
-        /// <summary>
-        /// searchSub control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl searchSub;
-        
+        protected global::System.Web.UI.WebControls.Panel pnlSubdivision;
+
         /// <summary>
         /// txtSubdivision control.
         /// </summary>
@@ -353,7 +220,7 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtSubdivision;
-        
+
         /// <summary>
         /// btnSearchSubdivision control.
         /// </summary>
@@ -362,7 +229,7 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSearchSubdivision;
-        
+
         /// <summary>
         /// lblSearchSubdivisionWarning control.
         /// </summary>
@@ -371,7 +238,7 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblSearchSubdivisionWarning;
-        
+
         /// <summary>
         /// gvSearchSubdivision control.
         /// </summary>
@@ -380,5 +247,131 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvSearchSubdivision;
+
+        /// <summary>
+        /// pnlSTR control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlSTR;
+
+        /// <summary>
+        /// ddlSection control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlSection;
+
+        /// <summary>
+        /// ddlTownship control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlTownship;
+
+        /// <summary>
+        /// ddlRange control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlRange;
+
+        /// <summary>
+        /// btnSearchSTR control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSearchSTR;
+
+        /// <summary>
+        /// lblSearchSTRWarning control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSearchSTRWarning;
+
+        /// <summary>
+        /// gvSearchSTR control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvSearchSTR;
+
+        /// <summary>
+        /// pnlCabSlideLot control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlCabSlideLot;
+
+        /// <summary>
+        /// txtCabinet control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCabinet;
+
+        /// <summary>
+        /// txtSlide control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtSlide;
+
+        /// <summary>
+        /// txtLot control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtLot;
+
+        /// <summary>
+        /// btnSearchCabSlideLot control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSearchCabSlideLot;
+
+        /// <summary>
+        /// lblSearchCabSlideLotWarning control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSearchCabSlideLotWarning;
+
+        /// <summary>
+        /// gvSearchCabSlideLot control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvSearchCabSlideLot;
     }
 }

@@ -190,6 +190,10 @@ hr.header-title {
     font-size: .75rem
 }
 
+hr.form-divider {
+    border-top: 2px solid rgba(0,0,0,.2);
+}
+
 /* ======================================================== */
 
 

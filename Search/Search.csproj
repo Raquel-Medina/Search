@@ -143,6 +143,7 @@
     <Content Include="MH-Search.aspx" />
     <Content Include="Mugshot-Details.aspx" />
     <Content Include="Mugshot-Search.aspx" />
+    <Content Include="Parcel-Details-Error.aspx" />
     <Content Include="Parcel-Details.aspx" />
     <Content Include="Parcel-Search.aspx" />
     <Content Include="ParcelSearch-Test.aspx" />
@@ -251,6 +252,13 @@
     </Compile>
     <Compile Include="Mugshot-Search.aspx.designer.cs">
       <DependentUpon>Mugshot-Search.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Parcel-Details-Error.aspx.cs">
+      <DependentUpon>Parcel-Details-Error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Parcel-Details-Error.aspx.designer.cs">
+      <DependentUpon>Parcel-Details-Error.aspx</DependentUpon>
     </Compile>
     <Compile Include="Parcel-Details.aspx.cs">
       <DependentUpon>Parcel-Details.aspx</DependentUpon>
