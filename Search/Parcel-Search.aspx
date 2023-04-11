@@ -53,7 +53,7 @@
                     <h5 class="header-title">OWNERS NAME</h5>
                     <div class="row">
                         <div class="col-lg-10 col-sm-12 align-self-center pb-2">
-                            <asp:TextBox ID="txtOwner" CssClass="form-control" placeholder="LAST/FIRST NAME" runat="server" />
+                            <asp:TextBox ID="txtOwner" CssClass="form-control" placeholder="LAST/FIRST NAME" datalpignore="true" runat="server" />
                         </div>
                         <div class="col-lg-2 col-sm-12 align-self-center pb-2">
                             <asp:Button ID="btnSearchOwner" Text="Search" CssClass="btn button-primary button-responsive" OnClick="btn_Click" runat="server" />
@@ -83,7 +83,7 @@
                     <h5 class="header-title">PROPERTY ADDRESS</h5>
                     <div class="row">
                         <div class="col-lg-2 col-sm-12 align-self-center pb-2">
-                            <asp:TextBox ID="txtNumber" CssClass="form-control" placeholder="STREET NUMBER" runat="server" />
+                            <asp:TextBox ID="txtNumber" CssClass="form-control" placeholder="STREET NUMBER" datalpignore="true" runat="server" />
                         </div>
                         <div class="col-lg-2 col-sm-12 align-self-center pb-2">
                             <asp:DropDownList ID="ddlDirection" CssClass="form-control" runat="server">
@@ -95,7 +95,7 @@
                             </asp:DropDownList>
                         </div>
                         <div class="col-lg-4 col-sm-12 align-self-center pb-2">
-                            <asp:TextBox ID="txtStreetName" CssClass="form-control" placeholder="STREET NAME" runat="server" />
+                            <asp:TextBox ID="txtStreetName" CssClass="form-control" placeholder="STREET NAME" datalpignore="true" runat="server" />
                         </div>
                         <div class="col-lg-2 col-sm-12 align-self-center pb-2">
                             <asp:DropDownList ID="ddlSuffix" CssClass="form-control" placeholder="SUFFIX" runat="server">
@@ -147,13 +147,13 @@
                     <h5 class="header-title">PARCEL NUMBER</h5>
                     <div class="row">
                         <div class="col-lg-3 col-sm-12 align-self-center pb-2">
-                            <asp:TextBox ID="txtBook" CssClass="form-control" placeholder="BOOK" runat="server" />
+                            <asp:TextBox ID="txtBook" CssClass="form-control" placeholder="BOOK" datalpignore="true" runat="server" />
                         </div>
                         <div class="col-lg-2 col-sm-12 align-self-center pb-2">
-                            <asp:TextBox ID="txtMap" CssClass="form-control" placeholder="MAP" runat="server" />
+                            <asp:TextBox ID="txtMap" CssClass="form-control" placeholder="MAP" datalpignore="true" runat="server" />
                         </div>
                         <div class="col-lg-3 col-sm-12 align-self-center pb-2">
-                            <asp:TextBox ID="txtParcel" CssClass="form-control" placeholder="PARCEL" runat="server" />
+                            <asp:TextBox ID="txtParcel" CssClass="form-control" placeholder="PARCEL" datalpignore="true" runat="server" />
                         </div>
                         <div class="col-lg-2 col-sm-12 align-self-center pb-2">
                             <asp:DropDownList ID="ddlSplit" CssClass="form-control" runat="server">
@@ -321,13 +321,13 @@
                     <h5 class="header-title">CABINET/SLIDE/LOT</h5>
                     <div class="row">
                         <div class="col-lg-3 col-sm-12 align-self-center pb-2">
-                            <asp:TextBox ID="txtCabinet" CssClass="form-control" placeholder="CABINET" runat="server" />
+                            <asp:TextBox ID="txtCabinet" CssClass="form-control" placeholder="CABINET" datalpignore="true" runat="server" />
                         </div>
                         <div class="col-lg-3 col-sm-12 align-self-center pb-2">
-                            <asp:TextBox ID="txtSlide" CssClass="form-control" placeholder="SLIDE" runat="server" />
+                            <asp:TextBox ID="txtSlide" CssClass="form-control" placeholder="SLIDE" datalpignore="true" runat="server" />
                         </div>
                         <div class="col-lg-4 col-sm-12 align-self-center pb-2">
-                            <asp:TextBox ID="txtLot" CssClass="form-control" placeholder="LOT" runat="server" />
+                            <asp:TextBox ID="txtLot" CssClass="form-control" placeholder="LOT" datalpignore="true" runat="server" />
                         </div>
                         <div class="col-2 align-self-center pb-2">
                             <asp:Button ID="btnSearchCabSlideLot" Text="Search" CssClass="btn button-primary button-responsive" OnClick="btn_Click" runat="server" />
@@ -357,7 +357,7 @@
                     <h5 class="header-title">SUBDIVISION NAME</h5>
                     <div class="row">
                         <div class="col-lg-10 col-sm-12 align-self-center pb-2">
-                            <asp:TextBox ID="txtSubdivision" CssClass="form-control" placeholder="SUBDIVISION NAME" runat="server" />
+                            <asp:TextBox ID="txtSubdivision" CssClass="form-control" placeholder="SUBDIVISION NAME" datalpignore="true" runat="server" />
                         </div>
                         <div class="col-2 align-self-center pb-2">
                             <asp:Button ID="btnSearchSubdivision" Text="Search" CssClass="btn button-primary button-responsive" OnClick="btn_Click" runat="server" />

@@ -54,7 +54,7 @@
                     <asp:Panel ID="pnlOwner" DefaultButton="btnSearchOwner" runat="server">
                     <div class="row">
                         <div class="col-10">
-                            <asp:TextBox ID="txtOwner" CssClass="form-control" placeholder="LAST/FIRST NAME" runat="server" />
+                            <asp:TextBox ID="txtOwner" CssClass="form-control" placeholder="LAST/FIRST NAME" datalpignore="true" runat="server" />
                         </div>
                         <div class="col-2">
                             <asp:Button ID="btnSearchOwner" Text="Search" CssClass="btn button-primary button-responsive" OnClick="btn_Click" runat="server" />
@@ -85,7 +85,7 @@
                     <asp:Panel ID="pnlAddress" DefaultButton="btnSearchAddress" runat="server">
                     <div class="row">
                         <div class="col-2">
-                            <asp:TextBox ID="txtNumber" CssClass="form-control" placeholder="STREET NUMBER" runat="server" />
+                            <asp:TextBox ID="txtNumber" CssClass="form-control" placeholder="STREET NUMBER" datalpignore="true" runat="server" />
                         </div>
                         <div class="col-2">
                             <asp:DropDownList ID="ddlDirection" CssClass="form-control" runat="server">
@@ -97,7 +97,7 @@
                             </asp:DropDownList>
                         </div>
                         <div class="col-4">
-                            <asp:TextBox ID="txtStreetName" CssClass="form-control" placeholder="STREET NAME" runat="server" />
+                            <asp:TextBox ID="txtStreetName" CssClass="form-control" placeholder="STREET NAME" datalpignore="true" runat="server" />
                         </div>
                         <div class="col-2">
                             <asp:DropDownList ID="ddlSuffix" CssClass="form-control" placeholder="SUFFIX" runat="server">
@@ -150,13 +150,13 @@
                     <asp:Panel ID="pnlParcel" DefaultButton="btnSearchParcel" runat="server">
                     <div class="row">
                         <div class="col-3">
-                            <asp:TextBox ID="txtBook" CssClass="form-control" placeholder="BOOK" MaxLength="3" onkeyup="moveFocus(this, 'txtMap')" runat="server" />
+                            <asp:TextBox ID="txtBook" CssClass="form-control" placeholder="BOOK" MaxLength="3" datalpignore="true" onkeyup="moveFocus(this, 'txtMap')" runat="server" />
                         </div>
                         <div class="col-2">
-                            <asp:TextBox ID="txtMap" CssClass="form-control" placeholder="MAP" MaxLength="2" onkeyup="moveFocus(this, 'txtParcel')" runat="server" />
+                            <asp:TextBox ID="txtMap" CssClass="form-control" placeholder="MAP" MaxLength="2" datalpignore="true" onkeyup="moveFocus(this, 'txtParcel')" runat="server" />
                         </div>
                         <div class="col-3">
-                            <asp:TextBox ID="txtParcel" CssClass="form-control" placeholder="PARCEL" MaxLength="3" onkeyup="moveFocus(this, 'ddlSplit')" runat="server" />
+                            <asp:TextBox ID="txtParcel" CssClass="form-control" placeholder="PARCEL" MaxLength="3" datalpignore="true" onkeyup="moveFocus(this, 'ddlSplit')" runat="server" />
                         </div>
                         <div class="col-2">
                             <asp:DropDownList ID="ddlSplit" CssClass="form-control" runat="server">
@@ -219,7 +219,7 @@
                     <asp:Panel ID="pnlSubdivision" DefaultButton="btnSearchSubdivision" runat="server">
                     <div class="row">
                         <div class="col-10">
-                            <asp:TextBox ID="txtSubdivision" CssClass="form-control" placeholder="SUBDIVISION NAME" runat="server" />
+                            <asp:TextBox ID="txtSubdivision" CssClass="form-control" placeholder="SUBDIVISION NAME" datalpignore="true" runat="server" />
                         </div>
                         <div class="col-2">
                             <asp:Button ID="btnSearchSubdivision" Text="Search" CssClass="btn button-primary button-responsive" OnClick="btn_Click" runat="server" />
