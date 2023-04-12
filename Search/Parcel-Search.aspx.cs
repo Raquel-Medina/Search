@@ -386,7 +386,7 @@ namespace Search
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 con.Open();
-                SqlCommand cmd = new SqlCommand("Sp_search_infolistbyowner_cama", con);
+                SqlCommand cmd = new SqlCommand("Sp_search_listbyowner", con);
 
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@OwnerName", SqlDbType.VarChar).Value = owner;
