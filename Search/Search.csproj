@@ -147,6 +147,7 @@
     <Content Include="Parcel-Details-Invalid.aspx" />
     <Content Include="Parcel-Details.aspx" />
     <Content Include="Parcel-Search.aspx" />
+    <Content Include="ParcelDetails-Test.aspx" />
     <Content Include="ParcelSearch-Test.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -281,6 +282,13 @@
     </Compile>
     <Compile Include="Parcel-Search.aspx.designer.cs">
       <DependentUpon>Parcel-Search.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ParcelDetails-Test.aspx.cs">
+      <DependentUpon>ParcelDetails-Test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ParcelDetails-Test.aspx.designer.cs">
+      <DependentUpon>ParcelDetails-Test.aspx</DependentUpon>
     </Compile>
     <Compile Include="ParcelSearch-Test.aspx.cs">
       <DependentUpon>ParcelSearch-Test.aspx</DependentUpon>

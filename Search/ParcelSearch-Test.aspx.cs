@@ -26,6 +26,8 @@ namespace Search
                 ClearAddress();
                 ClearParcel();
                 ClearSub();
+                ClearSTR();
+                ClearCabSlideLot();
             }
         }
 
@@ -124,6 +126,8 @@ namespace Search
                     ClearOwner();
                     ClearParcel();
                     ClearSub();
+                    ClearSTR();
+                    ClearCabSlideLot();
                     break;
 
                 case "btnSearchParcel":
@@ -301,6 +305,8 @@ namespace Search
                     ClearOwner();
                     ClearAddress();
                     ClearSub();
+                    ClearSTR();
+                    ClearCabSlideLot();
                     break;
 
                 case "btnSearchSubdivision":
@@ -330,6 +336,46 @@ namespace Search
                     ClearOwner();
                     ClearAddress();
                     ClearParcel();
+                    ClearSTR();
+                    ClearCabSlideLot();
+                    break;
+                case "btnSearchSTR":
+                    if (ddlSection.SelectedIndex == 0 || ddlTownship.SelectedIndex == 0 || ddlRange.SelectedIndex == 0)
+                    {
+                        lblSearchSTRWarning.Visible = true;
+                        gvSearchSTR.Visible = false;
+                    }
+                    else
+                    {
+                        lblSearchSTRWarning.Visible = false;
+                        PopulateGridView_STR();
+                        gvSearchSTR.Visible = true;
+                    }
+
+                    ClearOwner();
+                    ClearAddress();
+                    ClearParcel();
+                    ClearSub();
+                    ClearCabSlideLot();
+                    break;
+                case "btnSearchCabSlideLot":
+                    if (txtCabinet.Text.Length == 0 || txtSlide.Text.Length == 0 || txtLot.Text.Length == 0)
+                    {
+                        lblSearchCabSlideLotWarning.Visible = true;
+                        gvSearchCabSlideLot.Visible = false;
+                    }
+                    else
+                    {
+                        lblSearchCabSlideLotWarning.Visible = false;
+                        PopulateGridView_CabSlideLot();
+                        gvSearchCabSlideLot.Visible = true;
+                    }
+
+                    ClearOwner();
+                    ClearAddress();
+                    ClearParcel();
+                    ClearSub();
+                    ClearSTR();
                     break;
             }
         }
@@ -341,7 +387,7 @@ namespace Search
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 con.Open();
-                SqlCommand cmd = new SqlCommand("Sp_search_infolistbyowner_cama", con);
+                SqlCommand cmd = new SqlCommand("Sp_search_listbyowner", con);
 
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@OwnerName", SqlDbType.VarChar).Value = owner;
@@ -469,6 +515,72 @@ namespace Search
             }
         }
 
+        private void PopulateGridView_STR()
+        {
+            string section = ddlSection.SelectedValue.ToString();
+            string township = ddlTownship.SelectedValue.ToString();
+            string range = ddlRange.SelectedValue.ToString();
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand("Sp_search_infolistbystr_cama", con);
+
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@SecNumber", SqlDbType.VarChar).Value = section;
+                cmd.Parameters.Add("@TwnNumber", SqlDbType.VarChar).Value = township;
+                cmd.Parameters.Add("@RngNumber", SqlDbType.VarChar).Value = range;
+
+                DataTable dt = new DataTable();
+                SqlDataAdapter adpt = new SqlDataAdapter(cmd);
+                adpt.Fill(dt);
+
+                if (dt.Rows.Count <= 0)
+                {
+                    lblSearchSTRWarning.Text = "No Results Found";
+                    lblSearchSTRWarning.Visible = true;
+                }
+                else
+                {
+                    gvSearchSTR.DataSource = dt;
+                    gvSearchSTR.DataBind();
+                }
+            }
+        }
+
+        private void PopulateGridView_CabSlideLot()
+        {
+            string cabinet = txtCabinet.Text.ToString().Trim();
+            string slide = txtSlide.Text.ToString().Trim();
+            string lot = txtLot.Text.ToString().Trim();
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand("Sp_search_cabinetslidelot_cama", con);
+
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@cabinetNumber", SqlDbType.VarChar).Value = cabinet;
+                cmd.Parameters.Add("@slideNumber", SqlDbType.VarChar).Value = slide;
+                cmd.Parameters.Add("@lotNumber", SqlDbType.VarChar).Value = lot;
+
+                DataTable dt = new DataTable();
+                SqlDataAdapter adpt = new SqlDataAdapter(cmd);
+                adpt.Fill(dt);
+
+                if (dt.Rows.Count <= 0)
+                {
+                    lblSearchCabSlideLotWarning.Text = "No Results Found";
+                    lblSearchCabSlideLotWarning.Visible = true;
+                }
+                else
+                {
+                    gvSearchCabSlideLot.DataSource = dt;
+                    gvSearchCabSlideLot.DataBind();
+                }
+            }
+        }
+
         ///<Summary>
         /// Add pager to each gridview
         ///</Summary>
@@ -495,6 +607,14 @@ namespace Search
                     gvSearchSubdivision.PageIndex = e.NewPageIndex;
                     PopulateGridView_Subdivision();
                     break;
+                case "gvSearchSTR":
+                    gvSearchSTR.PageIndex = e.NewPageIndex;
+                    PopulateGridView_STR();
+                    break;
+                case "gvSearchCabSlideLot":
+                    gvSearchCabSlideLot.PageIndex = e.NewPageIndex;
+                    PopulateGridView_CabSlideLot();
+                    break;
             }
         }
 
@@ -510,7 +630,7 @@ namespace Search
 
                 // Link parcel number to the parcel details page
                 string LeadID = DataBinder.Eval(e.Row.DataItem, "parcel_ID").ToString();
-                string Location = ResolveUrl("~/Parcel-Details.aspx") + "?parcel_ID=" + LeadID;
+                string Location = ResolveUrl("~/ParcelDetails-Test.aspx") + "?parcel_ID=" + LeadID;
                 e.Row.Attributes["onClick"] = string.Format("javascript:window.location='{0}';", Location);
                 e.Row.Style["cursor"] = "pointer";
 
@@ -564,6 +684,28 @@ namespace Search
             gvSearchSubdivision.DataSource = null;
             gvSearchSubdivision.DataBind();
             gvSearchSubdivision.Visible = false;
+        }
+
+        private void ClearSTR()
+        {
+            ddlSection.ClearSelection();
+            ddlTownship.ClearSelection();
+            ddlRange.ClearSelection();
+            lblSearchSTRWarning.Visible = false;
+            gvSearchSTR.DataSource = null;
+            gvSearchSTR.DataBind();
+            gvSearchSTR.Visible = false;
+        }
+
+        private void ClearCabSlideLot()
+        {
+            txtCabinet.Text = String.Empty;
+            txtSlide.Text = String.Empty;
+            txtLot.Text = String.Empty;
+            lblSearchCabSlideLotWarning.Visible = false;
+            gvSearchCabSlideLot.DataSource = null;
+            gvSearchCabSlideLot.DataBind();
+            gvSearchCabSlideLot.Visible = false;
         }
     }
 }
