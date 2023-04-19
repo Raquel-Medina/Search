@@ -251,7 +251,7 @@
                             <div class="row">
                                 <div class="col">
                                     <p>Previous year valuations are subject to change as prescribed in the Arizona Revised Statutes. All changes in value may not be reflected in this data. 
-                                        For updated/correct figures, please refer to the <a href="https://www.pinal.gov/755/Treasurer" target="_block">Treasurer's Office website</a>.</p>
+                                        For updated/correct figures, please refer to the <a href="https://treasurer.pinal.gov" target="_block">Treasurer's Office website</a>.</p>
                                 </div>
                             </div>
                             <div class="row mb-3">
@@ -259,14 +259,16 @@
                                     Tax Year:
                                     <asp:DropDownList ID="ddlTaxYear" runat="server" OnSelectedIndexChanged="ddlTaxYear_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>     
                                 </div>
-                                <div class="col-lg-3 pb-2 font-weight-bold">
-                                    Tax Area Code: <asp:HyperLink ID="hlTaxAreaCode" runat="server" />
+                                <div class="col-lg-3 pb-2">
+                                    <div class="details-title">Tax Area Code: </div><asp:HyperLink ID="hlTaxAreaCode" runat="server" />
                                 </div>
-                                <div class="col-lg-3 pb-2 font-weight-bold">
-                                    Use Code:
-                                    <a data-toggle="tooltip" data-placement="top" id="ttUseCode" runat="server">
-                                        <i class="icon-info-sign"></i>
-                                    </a>
+                                <div class="col-lg-3 pb-2">
+                                    <div class="details-title">
+                                        Use Code:
+                                        <a data-toggle="tooltip" data-placement="top" id="ttUseCode" runat="server">
+                                            <i class="icon-info-sign"></i>
+                                        </a>
+                                    </div>
                                     <asp:Label ID="lblUseCode" runat="server" />
                                 </div>
                             </div>

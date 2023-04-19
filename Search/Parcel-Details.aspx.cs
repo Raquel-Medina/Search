@@ -84,7 +84,7 @@ namespace Search
 
             hfCopy.Value = copyText;        // link for Share this parcel
             hlCompProp.NavigateUrl = "https://app1.pinal.gov/Comparables/index.html?APN=" + parcelID;
-            hlTaxInfo.NavigateUrl = "https://treasurer.pinalcountyaz.gov/ParcelInquiry?parcelnumber=" + parcelID;
+            hlTaxInfo.NavigateUrl = "https://treasurer.pinal.gov/ParcelInquiry?parcelnumber=" + parcelID;
             hlParcelViewer.NavigateUrl = "https://pinal.maps.arcgis.com/apps/webappviewer/index.html?id=d92bad11160e425ca191f048ef6ca556&find=" + parcelID;
             hlTaxChart.NavigateUrl = "https://www.pinal.gov/DocumentCenter/View/11053/VALYRCHART";
 
@@ -126,7 +126,7 @@ namespace Search
                     // *** Property Details *** //
                     lblParcelNum.Text = parcelnum;
                     hlTaxAreaCode.Text = drDetails["tax_area_c"].ToString();
-                    hlTaxAreaCode.NavigateUrl = "https://treasurer.pinalcountyaz.gov/ParcelInquiry/Main/AreaCodeRates?taxyear=" + DateTime.Now.AddYears(-1).Year.ToString() + "&areacode=" + drDetails["tax_area_c"].ToString();
+                    hlTaxAreaCode.NavigateUrl = "https://treasurer.pinal.gov/ParcelInquiry/Main/AreaCodeRates?taxyear=" + DateTime.Now.AddYears(-1).Year.ToString() + "&areacode=" + drDetails["tax_area_c"].ToString();
                     ttUseCode.Title = "ASSESSOR USE CODE   Primary Use: " + drDetails["primaryuse"].ToString() + "  Category: " + drDetails["category"].ToString() + "  Sub-Category: " + drDetails["subcategory"].ToString();
                     lblUseCode.Text = drDetails["use_code"].ToString();
                     lblSTR.Text = drDetails["section"].ToString() + "/" + drDetails["township"].ToString() + "/" + drDetails["range"].ToString();
