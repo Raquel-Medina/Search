@@ -192,7 +192,7 @@
                                     <%--<asp:Label ID="lblMultipleOwner1" CssClass="alert-light font-italic" runat="server"></asp:Label>--%>
                                 </div>
                                 <div class="col-lg-4 col-sm-12 pb-2">
-                                    <div class="details-title">SECONDARY OWNER</div>
+                                    <div class="details-title">NAME 2</div>
                                     <asp:GridView ID="gvOwner2" CssClass="table-plain" runat="server"></asp:GridView>
                                     <asp:Label ID="lblMultipleOwner2" runat="server"></asp:Label>
                                 </div>

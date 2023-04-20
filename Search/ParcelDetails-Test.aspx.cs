@@ -266,7 +266,6 @@ namespace Search
 
                 string owner1;
                 string owner2;
-                int numRows;
 
                 if (drOwners.HasRows)
                 {
