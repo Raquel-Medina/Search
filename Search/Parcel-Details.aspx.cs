@@ -105,148 +105,159 @@ namespace Search
                 cmdDetails.Parameters.Add("@Year", SqlDbType.VarChar).Value = taxYear;
 
                 drDetails = cmdDetails.ExecuteReader();
-                while (drDetails.Read())
+
+                if (drDetails.HasRows)
                 {
-                    string city = drDetails["p_city"].ToString();
-                    string propAddress = drDetails["p_stnm"].ToString() + " " + drDetails["p_dir"] + " " + drDetails["p_stna"] + " " + drDetails["p_sfx"] + " " + drDetails["p_city"].ToString() + ", " + drDetails["p_stat"].ToString() + " " + drDetails["p_zipc"].ToString();
-                    string owner2 = drDetails["owner_na2"].ToString();
-                    string careOf = drDetails["care_of"].ToString();
-                    string sub = drDetails["sub_div"].ToString();
-                    string unit = drDetails["unit"].ToString();
-                    string block = drDetails["BLOCK"].ToString();
-                    string lot = drDetails["lot"].ToString();
-                    string phase = drDetails["phase"].ToString();
-                    string cabinet = drDetails["cabinet"].ToString();
-                    string slide = drDetails["slide"].ToString();
-                    string recDate = drDetails["dkt_month"].ToString() + "/" + drDetails["dkt_day"].ToString() + "/" + drDetails["dkt_year"].ToString();
-                    decimal saleAmount = decimal.Parse(drDetails["docket_prc"].ToString());
-
-                    hlAddressLocation.NavigateUrl = "https://www.google.com/maps?q=" + propAddress;
-
-                    // *** Property Details *** //
-                    lblParcelNum.Text = parcelnum;
-                    hlTaxAreaCode.Text = drDetails["tax_area_c"].ToString();
-                    hlTaxAreaCode.NavigateUrl = "https://treasurer.pinal.gov/ParcelInquiry/Main/AreaCodeRates?taxyear=" + DateTime.Now.AddYears(-1).Year.ToString() + "&areacode=" + drDetails["tax_area_c"].ToString();
-                    ttUseCode.Title = "ASSESSOR USE CODE   Primary Use: " + drDetails["primaryuse"].ToString() + "  Category: " + drDetails["category"].ToString() + "  Sub-Category: " + drDetails["subcategory"].ToString();
-                    lblUseCode.Text = drDetails["use_code"].ToString();
-                    lblSTR.Text = drDetails["section"].ToString() + "/" + drDetails["township"].ToString() + "/" + drDetails["range"].ToString();
-                    lblPropDesc.Text = drDetails["legal_text"].ToString();
-                    ttPropDesc.Title = "This property description may be condensed and/or abbreviated for Assessor purposes. This description should not be used for transference of property. Please refer to official recorded documents for complete legal descriptions.";
-                    lblOwner1.Text = drDetails["owner_na1"].ToString();
-
-                    if (owner2 != "")
+                    while (drDetails.Read())
                     {
-                        lblOwner2.Text = owner2;
+                        string city = drDetails["p_city"].ToString();
+                        string propAddress = drDetails["p_stnm"].ToString() + " " + drDetails["p_dir"] + " " + drDetails["p_stna"] + " " + drDetails["p_sfx"] + " " + drDetails["p_city"].ToString() + ", " + drDetails["p_stat"].ToString() + " " + drDetails["p_zipc"].ToString();
+                        string owner2 = drDetails["owner_na2"].ToString();
+                        string careOf = drDetails["care_of"].ToString();
+                        string sub = drDetails["sub_div"].ToString();
+                        string unit = drDetails["unit"].ToString();
+                        string block = drDetails["BLOCK"].ToString();
+                        string lot = drDetails["lot"].ToString();
+                        string phase = drDetails["phase"].ToString();
+                        string cabinet = drDetails["cabinet"].ToString();
+                        string slide = drDetails["slide"].ToString();
+                        string recDate = drDetails["dkt_month"].ToString() + "/" + drDetails["dkt_day"].ToString() + "/" + drDetails["dkt_year"].ToString();
+                        decimal saleAmount = decimal.Parse(drDetails["docket_prc"].ToString());
+
+                        hlAddressLocation.NavigateUrl = "https://www.google.com/maps?q=" + propAddress;
+
+                        // *** Property Details *** //
+                        lblParcelNum.Text = parcelnum;
+                        hlTaxAreaCode.Text = drDetails["tax_area_c"].ToString();
+                        hlTaxAreaCode.NavigateUrl = "https://treasurer.pinal.gov/ParcelInquiry/Main/AreaCodeRates?taxyear=" + DateTime.Now.AddYears(-1).Year.ToString() + "&areacode=" + drDetails["tax_area_c"].ToString();
+                        ttUseCode.Title = "ASSESSOR USE CODE   Primary Use: " + drDetails["primaryuse"].ToString() + "  Category: " + drDetails["category"].ToString() + "  Sub-Category: " + drDetails["subcategory"].ToString();
+                        lblUseCode.Text = drDetails["use_code"].ToString();
+                        lblSTR.Text = drDetails["section"].ToString() + "/" + drDetails["township"].ToString() + "/" + drDetails["range"].ToString();
+                        lblPropDesc.Text = drDetails["legal_text"].ToString();
+                        ttPropDesc.Title = "This property description may be condensed and/or abbreviated for Assessor purposes. This description should not be used for transference of property. Please refer to official recorded documents for complete legal descriptions.";
+                        lblOwner1.Text = drDetails["owner_na1"].ToString();
+
+                        if (owner2 != "")
+                        {
+                            lblOwner2.Text = owner2;
+                        }
+                        else { lblOwner2.Text = "N/A"; }
+
+                        if (careOf != "")
+                        {
+                            lblCareof.Text = careOf;
+                        }
+                        else { lblCareof.Text = "N/A"; }
+
+                        lblMailingAddress.Text = drDetails["address"].ToString() + " " + drDetails["city"].ToString() + ", " + drDetails["state"].ToString() + " " + drDetails["zip_code"].ToString();
+
+                        if (city != "")
+                        {
+                            lblPropAddress.Text = propAddress;
+                        }
+                        else { lblPropAddress.Text = ""; }
+
+                        ttPropAddress.Title = "Property Address refers to a geographical location: it may not match the mailing address city or zip code.";
+
+                        if (sub != "")
+                        {
+                            lblSubdivision.Text = sub;
+                        }
+                        else { lblSubdivision.Text = "N/A"; }
+
+                        if (unit != "")
+                        {
+                            lblUnit.Text = unit;
+                        }
+                        else { lblUnit.Text = "N/A"; }
+
+                        if (block != "")
+                        {
+                            lblBlock.Text = block;
+                        }
+                        else { lblBlock.Text = "N/A"; }
+
+                        if (lot != "")
+                        {
+                            lblLot.Text = lot;
+                        }
+                        else { lblLot.Text = "N/A"; }
+
+                        if (phase != "")
+                        {
+                            lblPhase.Text = phase;
+                        }
+                        else { lblPhase.Text = "N/A"; }
+
+                        if (cabinet != "")
+                        {
+                            lblCabinet.Text = cabinet;
+                        }
+                        else { lblCabinet.Text = "N/A"; }
+
+                        if (slide != "")
+                        {
+                            lblSlide.Text = slide;
+                        }
+                        else { lblSlide.Text = "N/A"; }
+
+                        if (recDate != "0/0/0")
+                        {
+                            lblRecDate.Text = recDate;
+                        }
+                        else { lblRecDate.Text = "Not Given"; }
+
+                        if (saleAmount > 0)
+                        {
+                            lblSaleAmt.Text = string.Format("{0:C}", saleAmount);
+                        }
+                        else { lblSaleAmt.Text = "Not Given"; }
+
+                        // *** Parcel Details *** //
+                        decimal parcelSize = decimal.Parse(drDetails["prcl_size"].ToString());
+                        string llc = drDetails["land_lg_cl"].ToString();
+                        string ilc = drDetails["impr_lg_cl"].ToString();
+                        decimal fcvMoney = decimal.Parse(drDetails["total_fcv"].ToString());
+                        decimal lvpMoney = decimal.Parse(drDetails["total_lpv"].ToString());
+                        decimal afcvMoney = decimal.Parse(drDetails["t_fcv_av"].ToString());
+                        decimal alpvMoney = decimal.Parse(drDetails["t_lpv_av"].ToString());
+
+                        lblParcelSize.Text = Math.Round(parcelSize, 2).ToString();
+                        lblSizeIndicator.Text = drDetails["land_ind"].ToString();
+
+                        if (llc != "")
+                        {
+                            lblLandLegalClass.Text = drDetails["land_lg_cl"].ToString() + "-" + drDetails["land_descr"].ToString();
+                        }
+                        else { lblLandLegalClass.Text = "Not Given"; }
+
+                        if (ilc == "")
+                        {
+                            lblImprLegalClass.Text = drDetails["impr_lg_cl"].ToString() + "-" + drDetails["impr_descr"].ToString();
+                        }
+                        else { lblImprLegalClass.Text = "Not Given"; }
+
+                        lblFCV.Text = String.Format("{0:C}", fcvMoney);
+                        lblLVP.Text = String.Format("{0:C}", lvpMoney);
+                        lblAssessedFCV.Text = String.Format("{0:C}", afcvMoney);
+                        lblAssessedLPV.Text = String.Format("{0:C}", alpvMoney);
+
+                        // *** Attached Personal Property *** //
+                        string attachedProp = drDetails["mhcheck"].ToString();
+                        if (attachedProp != "0")
+                        {
+                            hlAttachedProp.Text = "View Personal Property Attached to This Parcel";
+                            hlAttachedProp.NavigateUrl = "MH-Details.aspx?id=" + drDetails["accountno"].ToString();
+                        }
+                        else lblAttachedProp.Text = "No Personal Property Listed";
                     }
-                    else { lblOwner2.Text = "N/A"; }
-
-                    if (careOf != "")
-                    {
-                        lblCareof.Text = careOf;
-                    }
-                    else { lblCareof.Text = "N/A"; }
-
-                    lblMailingAddress.Text = drDetails["address"].ToString() + " " + drDetails["city"].ToString() + ", " + drDetails["state"].ToString() + " " + drDetails["zip_code"].ToString();
-
-                    if (city != "")
-                    {
-                        lblPropAddress.Text = propAddress;
-                    }
-                    else { lblPropAddress.Text = ""; }
-
-                    ttPropAddress.Title = "Property Address refers to a geographical location: it may not match the mailing address city or zip code.";
-
-                    if (sub != "")
-                    {
-                        lblSubdivision.Text = sub;
-                    }
-                    else { lblSubdivision.Text = "N/A"; }
-
-                    if (unit != "")
-                    {
-                        lblUnit.Text = unit;
-                    }
-                    else { lblUnit.Text = "N/A"; }
-
-                    if (block != "")
-                    {
-                        lblBlock.Text = block;
-                    }
-                    else { lblBlock.Text = "N/A"; }
-
-                    if (lot != "")
-                    {
-                        lblLot.Text = lot;
-                    }
-                    else { lblLot.Text = "N/A"; }
-
-                    if (phase != "")
-                    {
-                        lblPhase.Text = phase;
-                    }
-                    else { lblPhase.Text = "N/A"; }
-
-                    if (cabinet != "")
-                    {
-                        lblCabinet.Text = cabinet;
-                    }
-                    else { lblCabinet.Text = "N/A"; }
-
-                    if (slide != "")
-                    {
-                        lblSlide.Text = slide;
-                    }
-                    else { lblSlide.Text = "N/A"; }
-
-                    if (recDate != "0/0/0")
-                    {
-                        lblRecDate.Text = recDate;
-                    }
-                    else { lblRecDate.Text = "Not Given"; }
-
-                    if (saleAmount > 0)
-                    {
-                        lblSaleAmt.Text = string.Format("{0:C}", saleAmount);
-                    }
-                    else { lblSaleAmt.Text = "Not Given"; }
-
-                    // *** Parcel Details *** //
-                    decimal parcelSize = decimal.Parse(drDetails["prcl_size"].ToString());
-                    string llc = drDetails["land_lg_cl"].ToString();
-                    string ilc = drDetails["impr_lg_cl"].ToString();
-                    decimal fcvMoney = decimal.Parse(drDetails["total_fcv"].ToString());
-                    decimal lvpMoney = decimal.Parse(drDetails["total_lpv"].ToString());
-                    decimal afcvMoney = decimal.Parse(drDetails["t_fcv_av"].ToString());
-                    decimal alpvMoney = decimal.Parse(drDetails["t_lpv_av"].ToString());
-
-                    lblParcelSize.Text = Math.Round(parcelSize, 2).ToString();
-                    lblSizeIndicator.Text = drDetails["land_ind"].ToString();
-
-                    if (llc != "")
-                    {
-                        lblLandLegalClass.Text = drDetails["land_lg_cl"].ToString() + "-" + drDetails["land_descr"].ToString();
-                    }
-                    else { lblLandLegalClass.Text = "Not Given"; }
-
-                    if (ilc == "")
-                    {
-                        lblImprLegalClass.Text = drDetails["impr_lg_cl"].ToString() + "-" + drDetails["impr_descr"].ToString();
-                    }
-                    else { lblImprLegalClass.Text = "Not Given"; }
-
-                    lblFCV.Text = String.Format("{0:C}", fcvMoney);
-                    lblLVP.Text = String.Format("{0:C}", lvpMoney);
-                    lblAssessedFCV.Text = String.Format("{0:C}", afcvMoney);
-                    lblAssessedLPV.Text = String.Format("{0:C}", alpvMoney);
-
-                    // *** Attached Personal Property *** //
-                    string attachedProp = drDetails["mhcheck"].ToString();
-                    if (attachedProp != "0")
-                    {
-                        hlAttachedProp.Text = "View Personal Property Attached to This Parcel";
-                        hlAttachedProp.NavigateUrl = "MH-Details.aspx?id=" + drDetails["accountno"].ToString();
-                    }
-                    else lblAttachedProp.Text = "No Personal Property Listed";
+                    lblValInfoMessage.Visible = false;
+                    valInfo.Visible = true;
+                }
+                else
+                {
+                    lblValInfoMessage.Visible = true;
+                    valInfo.Visible = false;
                 }
 
                 drDetails.Close();

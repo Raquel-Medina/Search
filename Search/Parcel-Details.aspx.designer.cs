@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Search {
-    
-    
-    public partial class Parcel_Details {
-        
+namespace Search
+{
+
+
+    public partial class Parcel_Details
+    {
+
         /// <summary>
         /// form1 control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-        
+
         /// <summary>
         /// btnBack control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnBack;
-        
+
         /// <summary>
         /// hlCompProp control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink hlCompProp;
-        
+
         /// <summary>
         /// hlTaxInfo control.
         /// </summary>
@@ -47,7 +49,7 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink hlTaxInfo;
-        
+
         /// <summary>
         /// hlParcelViewer control.
         /// </summary>
@@ -56,7 +58,7 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink hlParcelViewer;
-        
+
         /// <summary>
         /// hlTaxChart control.
         /// </summary>
@@ -65,7 +67,7 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink hlTaxChart;
-        
+
         /// <summary>
         /// hlAddressLocation control.
         /// </summary>
@@ -74,7 +76,7 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink hlAddressLocation;
-        
+
         /// <summary>
         /// lbShareParcel control.
         /// </summary>
@@ -83,7 +85,7 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lbShareParcel;
-        
+
         /// <summary>
         /// hfCopy control.
         /// </summary>
@@ -92,7 +94,7 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hfCopy;
-        
+
         /// <summary>
         /// lbPrintDetails control.
         /// </summary>
@@ -101,7 +103,7 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lbPrintDetails;
-        
+
         /// <summary>
         /// lblParcelNum control.
         /// </summary>
@@ -110,7 +112,7 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblParcelNum;
-        
+
         /// <summary>
         /// lblSTR control.
         /// </summary>
@@ -119,7 +121,7 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblSTR;
-        
+
         /// <summary>
         /// ttPropDesc control.
         /// </summary>
@@ -128,7 +130,7 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor ttPropDesc;
-        
+
         /// <summary>
         /// lblPropDesc control.
         /// </summary>
@@ -137,7 +139,7 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblPropDesc;
-        
+
         /// <summary>
         /// lblSubdivision control.
         /// </summary>
@@ -146,7 +148,7 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblSubdivision;
-        
+
         /// <summary>
         /// lblUnit control.
         /// </summary>
@@ -155,7 +157,7 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblUnit;
-        
+
         /// <summary>
         /// lblBlock control.
         /// </summary>
@@ -164,7 +166,7 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblBlock;
-        
+
         /// <summary>
         /// lblLot control.
         /// </summary>
@@ -173,7 +175,7 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblLot;
-        
+
         /// <summary>
         /// lblPhase control.
         /// </summary>
@@ -182,7 +184,7 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblPhase;
-        
+
         /// <summary>
         /// lblCabinet control.
         /// </summary>
@@ -191,7 +193,7 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblCabinet;
-        
+
         /// <summary>
         /// lblSlide control.
         /// </summary>
@@ -200,7 +202,7 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblSlide;
-        
+
         /// <summary>
         /// lblOwner1 control.
         /// </summary>
@@ -209,7 +211,7 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblOwner1;
-        
+
         /// <summary>
         /// lblOwner2 control.
         /// </summary>
@@ -218,7 +220,7 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblOwner2;
-        
+
         /// <summary>
         /// lblCareof control.
         /// </summary>
@@ -227,7 +229,7 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblCareof;
-        
+
         /// <summary>
         /// lblMailingAddress control.
         /// </summary>
@@ -236,7 +238,7 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblMailingAddress;
-        
+
         /// <summary>
         /// ttPropAddress control.
         /// </summary>
@@ -245,7 +247,7 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor ttPropAddress;
-        
+
         /// <summary>
         /// lblPropAddress control.
         /// </summary>
@@ -254,7 +256,7 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblPropAddress;
-        
+
         /// <summary>
         /// lblRecDate control.
         /// </summary>
@@ -263,7 +265,7 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblRecDate;
-        
+
         /// <summary>
         /// lblSaleAmt control.
         /// </summary>
@@ -272,7 +274,7 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblSaleAmt;
-        
+
         /// <summary>
         /// lblDocs control.
         /// </summary>
@@ -281,7 +283,7 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblDocs;
-        
+
         /// <summary>
         /// hlDocs control.
         /// </summary>
@@ -290,7 +292,7 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink hlDocs;
-        
+
         /// <summary>
         /// gvDocuments control.
         /// </summary>
@@ -299,7 +301,7 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvDocuments;
-        
+
         /// <summary>
         /// ddlTaxYear control.
         /// </summary>
@@ -308,7 +310,25 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlTaxYear;
-        
+
+        /// <summary>
+        /// lblValInfoMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblValInfoMessage;
+
+        /// <summary>
+        /// valInfo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl valInfo;
+
         /// <summary>
         /// hlTaxAreaCode control.
         /// </summary>
@@ -317,7 +337,7 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink hlTaxAreaCode;
-        
+
         /// <summary>
         /// ttUseCode control.
         /// </summary>
@@ -326,7 +346,7 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor ttUseCode;
-        
+
         /// <summary>
         /// lblUseCode control.
         /// </summary>
@@ -335,7 +355,7 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblUseCode;
-        
+
         /// <summary>
         /// lblParcelSize control.
         /// </summary>
@@ -344,7 +364,7 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblParcelSize;
-        
+
         /// <summary>
         /// lblSizeIndicator control.
         /// </summary>
@@ -353,25 +373,7 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblSizeIndicator;
-        
-        /// <summary>
-        /// lblLandLegalClass control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblLandLegalClass;
-        
-        /// <summary>
-        /// lblImprLegalClass control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblImprLegalClass;
-        
+
         /// <summary>
         /// lblFCV control.
         /// </summary>
@@ -380,7 +382,7 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblFCV;
-        
+
         /// <summary>
         /// lblLVP control.
         /// </summary>
@@ -389,7 +391,7 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblLVP;
-        
+
         /// <summary>
         /// lblAssessedFCV control.
         /// </summary>
@@ -398,7 +400,7 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblAssessedFCV;
-        
+
         /// <summary>
         /// lblAssessedLPV control.
         /// </summary>
@@ -407,7 +409,25 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblAssessedLPV;
-        
+
+        /// <summary>
+        /// lblLandLegalClass control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblLandLegalClass;
+
+        /// <summary>
+        /// lblImprLegalClass control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblImprLegalClass;
+
         /// <summary>
         /// hlImps control.
         /// </summary>
@@ -416,7 +436,7 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink hlImps;
-        
+
         /// <summary>
         /// gvImps control.
         /// </summary>
@@ -425,7 +445,7 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvImps;
-        
+
         /// <summary>
         /// lblAttachedProp control.
         /// </summary>
@@ -434,7 +454,7 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblAttachedProp;
-        
+
         /// <summary>
         /// hlAttachedProp control.
         /// </summary>
@@ -443,7 +463,7 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink hlAttachedProp;
-        
+
         /// <summary>
         /// lblWidow control.
         /// </summary>
@@ -452,7 +472,7 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblWidow;
-        
+
         /// <summary>
         /// lblWidower control.
         /// </summary>
@@ -461,7 +481,7 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblWidower;
-        
+
         /// <summary>
         /// lblDisabled control.
         /// </summary>
@@ -470,7 +490,7 @@ namespace Search {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblDisabled;
-        
+
         /// <summary>
         /// lblSrFreeze control.
         /// </summary>

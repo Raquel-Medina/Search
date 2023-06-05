@@ -255,57 +255,64 @@
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <div class="col-lg-3 pb-2 font-weight-bold">
+                                <div class="col-12 pb-2 font-weight-bold">
                                     Tax Year:
-                                    <asp:DropDownList ID="ddlTaxYear" runat="server" OnSelectedIndexChanged="ddlTaxYear_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>     
+                                    <asp:DropDownList ID="ddlTaxYear" runat="server" OnSelectedIndexChanged="ddlTaxYear_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
                                 </div>
-                                <div class="col-lg-3 pb-2">
-                                    <div class="details-title">Tax Area Code: </div><asp:HyperLink ID="hlTaxAreaCode" runat="server" />
+                                <div class="col pb-2">
+                                    <asp:Label ID="lblValInfoMessage" runat="server" Text="There is no Valuation Information available for the selected year." Visible="false" />
                                 </div>
-                                <div class="col-lg-3 pb-2">
-                                    <div class="details-title">
-                                        Use Code:
-                                        <a data-toggle="tooltip" data-placement="top" id="ttUseCode" runat="server">
-                                            <i class="icon-info-sign"></i>
-                                        </a>
+                            </div>
+                            <div id="valInfo" runat="server">
+                                <div class="row mb-4">
+                                    <div class="col-lg-3 pb-2">
+                                        <div class="details-title">Tax Area Code: </div><asp:HyperLink ID="hlTaxAreaCode" runat="server" />
                                     </div>
-                                    <asp:Label ID="lblUseCode" runat="server" />
+                                    <div class="col-lg-3 pb-2">
+                                        <div class="details-title">
+                                            Use Code:
+                                            <a data-toggle="tooltip" data-placement="top" id="ttUseCode" runat="server">
+                                                <i class="icon-info-sign"></i>
+                                            </a>
+                                        </div>
+                                        <asp:Label ID="lblUseCode" runat="server" />
+                                    </div>
+                                    <div class="col-lg-3 col-sm-12 pb-2">
+                                        <div class="details-title">PARCEL SIZE</div>
+                                        <div><asp:Label ID="lblParcelSize" runat="server" /></div>
+                                    </div>
+                                    <div class="col-lg-3 col-sm-12 pb-2">
+                                        <div class="details-title">SIZE INDICATOR</div>
+                                        <div><asp:Label ID="lblSizeIndicator" runat="server" /></div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row mb-4">
-                                <div class="col-lg-3 col-sm-12 pb-2">
-                                    <div class="details-title">PARCEL SIZE</div>
-                                    <div><asp:Label ID="lblParcelSize" runat="server" /></div>
+                                <div class="row mb-4">
+                                    <div class="col-lg-3 col-sm-12 col-xs-3 pb-2">
+                                        <div class="details-title">FULL CASH VALUE</div>
+                                        <div><asp:Label ID="lblFCV" runat="server" /></div>
+                                    </div>
+                                    <div class="col-lg-3 col-sm-12 col-xs-3 pb-2">
+                                        <div class="details-title">LIMITED VALUE(LVP)</div>
+                                        <div><asp:Label ID="lblLVP" runat="server" /></div>
+                                    </div>
+                                    <div class="col-lg-3 col-sm-12 col-xs-3 pb-2">
+                                        <div class="details-title">ASSESSED FCV</div>
+                                        <div><asp:Label ID="lblAssessedFCV" runat="server" /></div>
+                                    </div>
+                                    <div class="col-lg-3 col-sm-12 col-xs-3">
+                                        <div class="details-title">ASSESSED LPV</div>
+                                        <div><asp:Label ID="lblAssessedLPV" runat="server" /></div>
+                                    </div>
                                 </div>
-                                <div class="col-lg-3 col-sm-12 pb-2">
-                                    <div class="details-title">SIZE INDICATOR</div>
-                                    <div><asp:Label ID="lblSizeIndicator" runat="server" /></div>
-                                </div>
-                                <div class="col-lg-3 col-sm-12 pb-2">
-                                    <div class="details-title">LAND LEGAL CLASS</div>
-                                    <div><asp:Label ID="lblLandLegalClass" runat="server" /></div>
-                                </div>
-                                <div class="col-lg-3 col-sm-12 pb-2">
-                                    <div class="details-title">IMPR. LEGAL CLASS</div>
-                                    <div><asp:Label ID="lblImprLegalClass" runat="server" /></div>
-                                </div>
-                            </div>
-                            <div class="row mb-4">
-                                <div class="col-lg-3 col-sm-12 col-xs-3 pb-2">
-                                    <div class="details-title">FULL CASH VALUE</div>
-                                    <div><asp:Label ID="lblFCV" runat="server" /></div>
-                                </div>
-                                <div class="col-lg-3 col-sm-12 col-xs-3 pb-2">
-                                    <div class="details-title">LIMITED VALUE(LVP)</div>
-                                    <div><asp:Label ID="lblLVP" runat="server" /></div>
-                                </div>
-                                <div class="col-lg-3 col-sm-12 col-xs-3 pb-2">
-                                    <div class="details-title">ASSESSED FCV</div>
-                                    <div><asp:Label ID="lblAssessedFCV" runat="server" /></div>
-                                </div>
-                                <div class="col-lg-3 col-sm-12 col-xs-3">
-                                    <div class="details-title">ASSESSED LPV</div>
-                                    <div><asp:Label ID="lblAssessedLPV" runat="server" /></div>
+                                <div class="row mb-4">
+                                    <div class="col-lg-3 col-sm-12 pb-2">
+                                        <div class="details-title">LAND LEGAL CLASS</div>
+                                        <div><asp:Label ID="lblLandLegalClass" runat="server" /></div>
+                                    </div>
+                                    <div class="col-lg-3 col-sm-12 pb-2">
+                                        <div class="details-title">IMPR. LEGAL CLASS</div>
+                                        <div><asp:Label ID="lblImprLegalClass" runat="server" /></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
