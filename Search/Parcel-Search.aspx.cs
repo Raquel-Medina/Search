@@ -450,7 +450,12 @@ namespace Search
             string book = txtBook.Text.ToString().Trim();
             string map = txtMap.Text.ToString().Trim();
             string parcel = txtParcel.Text.ToString().Trim();
-            string split = ddlSuffix.SelectedValue.ToString();
+            string split = ddlSplit.Text.ToString();
+
+            if (split == "SPLIT")
+            {
+                split = "";
+            }
 
             using (SqlConnection con = new SqlConnection(connectionString))
             {
