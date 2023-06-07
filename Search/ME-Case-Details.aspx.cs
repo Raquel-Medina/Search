@@ -15,7 +15,7 @@ namespace Search
     public partial class ME_Case_Details : System.Web.UI.Page
     {
         // *** Connection String *** //]
-        string connectionString = "Data Source=10.50.1.165; Initial Catalog=MedicalExaminer; User ID=toystory; Password=pixar";
+        string connectionString = ConfigurationManager.ConnectionStrings["MedicalExaminerConnectionString"].ConnectionString;
         protected void Page_Load(object sender, EventArgs e)
         {
             // Get the case information
