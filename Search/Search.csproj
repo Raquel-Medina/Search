@@ -147,8 +147,8 @@
     <Content Include="Parcel-Details-Invalid.aspx" />
     <Content Include="Parcel-Details.aspx" />
     <Content Include="Parcel-Search.aspx" />
-    <Content Include="ParcelDetails-Test.aspx" />
-    <Content Include="ParcelSearch-Test.aspx" />
+    <Content Include="ParcelDetails-Test-onHold.aspx" />
+    <Content Include="ParcelSearch-Test-onHold.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -283,19 +283,19 @@
     <Compile Include="Parcel-Search.aspx.designer.cs">
       <DependentUpon>Parcel-Search.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ParcelDetails-Test.aspx.cs">
-      <DependentUpon>ParcelDetails-Test.aspx</DependentUpon>
+    <Compile Include="ParcelDetails-Test-onHold.aspx.cs">
+      <DependentUpon>ParcelDetails-Test-onHold.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ParcelDetails-Test.aspx.designer.cs">
-      <DependentUpon>ParcelDetails-Test.aspx</DependentUpon>
+    <Compile Include="ParcelDetails-Test-onHold.aspx.designer.cs">
+      <DependentUpon>ParcelDetails-Test-onHold.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ParcelSearch-Test.aspx.cs">
-      <DependentUpon>ParcelSearch-Test.aspx</DependentUpon>
+    <Compile Include="ParcelSearch-Test-onHold.aspx.cs">
+      <DependentUpon>ParcelSearch-Test-onHold.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ParcelSearch-Test.aspx.designer.cs">
-      <DependentUpon>ParcelSearch-Test.aspx</DependentUpon>
+    <Compile Include="ParcelSearch-Test-onHold.aspx.designer.cs">
+      <DependentUpon>ParcelSearch-Test-onHold.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebForm1-Details.aspx.cs">
