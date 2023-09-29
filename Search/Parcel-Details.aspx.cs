@@ -129,7 +129,7 @@ namespace Search
                         // *** Property Details *** //
                         lblParcelNum.Text = parcelnum;
                         hlTaxAreaCode.Text = drDetails["tax_area_c"].ToString();
-                        hlTaxAreaCode.NavigateUrl = "https://treasurer.pinal.gov/ParcelInquiry/Main/AreaCodeRates?taxyear=" + DateTime.Now.AddYears(-1).Year.ToString() + "&areacode=" + drDetails["tax_area_c"].ToString();
+                        hlTaxAreaCode.NavigateUrl = "https://treasurer.pinal.gov/ParcelInquiry/Main/AreaCodeRates?taxyear=" + taxYear + "&areacode=" + drDetails["tax_area_c"].ToString();
                         ttUseCode.Title = "ASSESSOR USE CODE   Primary Use: " + drDetails["primaryuse"].ToString() + "  Category: " + drDetails["category"].ToString() + "  Sub-Category: " + drDetails["subcategory"].ToString();
                         lblUseCode.Text = drDetails["use_code"].ToString();
                         lblSTR.Text = drDetails["section"].ToString() + "/" + drDetails["township"].ToString() + "/" + drDetails["range"].ToString();

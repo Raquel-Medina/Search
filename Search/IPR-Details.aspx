@@ -176,7 +176,7 @@
                         <div class="row">
                             <div class="col">
                                 <p>Previous year valuations are subject to change as prescribed in the Arizona Revised Statutes. All changes in value may not be reflected in this data. 
-                                For updated/correct figures, please refer to the <a href="https://www.pinal.gov/755/Treasurer" target="_block">Treasurer's Office website</a>.</p>
+                                For updated/correct figures, please refer to the <a href="https://treasurer.pinal.gov" target="_block">Treasurer's Office website</a>.</p>
                             </div>
                         </div>
                         <div class="row mb-3">
