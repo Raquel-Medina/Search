@@ -56,7 +56,7 @@ namespace Search
                     hlTaxInfo.NavigateUrl = "https://treasurer.pinal.gov/ParcelInquiry?parcelnumber=" + parcelID;
                     //TAX AREA CODE
                     hlTaxAreaCode.Text = drDetails["area_code"].ToString();
-                    hlTaxAreaCode.NavigateUrl = "https://treasurer.pinalcountyaz.gov/ParcelInquiry/Main/AreaCodeRates?taxyear=" + buildDate + "&areacode=" + drDetails["area_code"].ToString();
+                    hlTaxAreaCode.NavigateUrl = "https://treasurer.pinal.gov/ParcelInquiry/Main/AreaCodeRates?taxyear=" + buildDate + "&areacode=" + drDetails["area_code"].ToString();
                     // ASSESSOR PARCEL VIEWER
                     hlParcelViewer.NavigateUrl = "https://pinal.maps.arcgis.com/apps/webappviewer/index.html?id=d92bad11160e425ca191f048ef6ca556&find=" + parcelID;
                     // PROPERTY ADDRESS LOCATION
