@@ -17,7 +17,7 @@ namespace Search
     public partial class MH_Search : System.Web.UI.Page
     {
         // *** Connection String *** //
-        string connectionString = "Data Source=10.50.1.165; Initial Catalog=Assessor; User ID=toystory; Password=pixar";
+        string connectionString = ConfigurationManager.ConnectionStrings["AssessorConnectionString"].ConnectionString;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
