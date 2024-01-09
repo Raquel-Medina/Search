@@ -47,7 +47,7 @@ namespace Search
 
                     if (txtOwner.Text.Length == 0)
                     {
-                        lblSearchOwnerWarning.Text = "The FIRST/LAST NAME field is required.";
+                        lblSearchOwnerWarning.Text = "The LAST FIRST NAME field is required.";
                         lblSearchOwnerWarning.Visible = true;
                         gvSearchName.Visible = false;
                     }

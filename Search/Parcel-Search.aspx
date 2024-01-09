@@ -54,7 +54,7 @@
                     <asp:Panel ID="pnlOwner" DefaultButton="btnSearchOwner" runat="server">
                         <div class="row">
                         <div class="col-lg-10 col-sm-12 align-self-center pb-2">
-                            <asp:TextBox ID="txtOwner" CssClass="form-control" placeholder="LAST/FIRST NAME" datalpignore="true" runat="server" />
+                            <asp:TextBox ID="txtOwner" CssClass="form-control" placeholder="LAST FIRST NAME" datalpignore="true" runat="server" />
                         </div>
                         <div class="col-lg-2 col-sm-12 align-self-center pb-2">
                             <asp:Button ID="btnSearchOwner" Text="Search" CssClass="btn button-primary button-responsive" OnClick="btn_Click" runat="server" />
