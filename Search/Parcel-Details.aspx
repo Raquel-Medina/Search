@@ -17,7 +17,6 @@
 
     <!-- Project CSS files -->
     <link rel="stylesheet" href="css/site.css" type="text/css" />
-    <link rel="stylesheet" media="print" href="css/print.css" />
 
     <!-- Tooltips (i) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -92,7 +91,7 @@
                                     <asp:HyperLink ID="hlTaxInfo" CssClass="tax-information" Target="_blank" runat="server">Tax Information</asp:HyperLink>
                                 </div>
                                 <div class="col-lg-3 col-sm-12 pb-2 assessor-parcel-viewer">
-                                    <asp:HyperLink ID="hlParcelViewer" CssClass="assessor-parcel-viewer" Target="_blank" runat="server">Assessor Parcel Viewer</asp:HyperLink>
+                                    <asp:HyperLink ID="hlParcelViewer" CssClass="assessor-parcel-viewer" Target="_blank" runat="server">Parcel Map Viewer (Currently Unavailable)</asp:HyperLink>
                                 </div>
                                 <div class="col-lg-3 col-sm-12 pb-2 tax-chart">
                                     <asp:HyperLink ID="hlTaxChart" CssClass="tax-chart" Target="_blank" runat="server">Tax Year Chart</asp:HyperLink>
