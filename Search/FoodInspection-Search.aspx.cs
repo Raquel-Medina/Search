@@ -323,29 +323,34 @@ namespace Search
 
         private void PopulateDdl()
         {
-            ddlEstNameYear.Items.Insert(0, DateTime.Now.Year.ToString());
-            ddlEstNameYear.Items.Insert(1, DateTime.Now.AddYears(-1).Year.ToString());
-            ddlEstNameYear.Items.Insert(2, DateTime.Now.AddYears(-2).Year.ToString());
-            ddlEstNameYear.Items.Insert(3, DateTime.Now.AddYears(-3).Year.ToString());
-            ddlEstNameYear.Items.Insert(4, DateTime.Now.AddYears(-4).Year.ToString());
+            // Create Years drop down list from database table
+            DataSet dsYears = null;
 
-            ddlPermitNumYear.Items.Insert(0, DateTime.Now.Year.ToString());
-            ddlPermitNumYear.Items.Insert(1, DateTime.Now.AddYears(-1).Year.ToString());
-            ddlPermitNumYear.Items.Insert(2, DateTime.Now.AddYears(-2).Year.ToString());
-            ddlPermitNumYear.Items.Insert(3, DateTime.Now.AddYears(-3).Year.ToString());
-            ddlPermitNumYear.Items.Insert(4, DateTime.Now.AddYears(-4).Year.ToString());
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+                SqlDataAdapter adapter = new SqlDataAdapter("SELECT DISTINCT YEAR(InspDate) AS YEAR FROM [EnvHealth].[dbo].[NewInspData] ORDER BY YEAR DESC", con);
 
-            ddlRatingClassYear.Items.Insert(0, DateTime.Now.Year.ToString());
-            ddlRatingClassYear.Items.Insert(1, DateTime.Now.AddYears(-1).Year.ToString());
-            ddlRatingClassYear.Items.Insert(2, DateTime.Now.AddYears(-2).Year.ToString());
-            ddlRatingClassYear.Items.Insert(3, DateTime.Now.AddYears(-3).Year.ToString());
-            ddlRatingClassYear.Items.Insert(4, DateTime.Now.AddYears(-4).Year.ToString());
+                dsYears = new DataSet();
 
-            ddlCityTownYear.Items.Insert(0, DateTime.Now.Year.ToString());
-            ddlCityTownYear.Items.Insert(1, DateTime.Now.AddYears(-1).Year.ToString());
-            ddlCityTownYear.Items.Insert(2, DateTime.Now.AddYears(-2).Year.ToString());
-            ddlCityTownYear.Items.Insert(3, DateTime.Now.AddYears(-3).Year.ToString());
-            ddlCityTownYear.Items.Insert(4, DateTime.Now.AddYears(-4).Year.ToString());
+                adapter.Fill(dsYears);
+            }
+
+            ddlEstNameYear.DataSource = dsYears;
+            ddlEstNameYear.DataTextField = "YEAR";
+            ddlEstNameYear.DataBind();
+
+            ddlPermitNumYear.DataSource = dsYears;
+            ddlPermitNumYear.DataTextField = "YEAR";
+            ddlPermitNumYear.DataBind();
+
+            ddlRatingClassYear.DataSource = dsYears;
+            ddlRatingClassYear.DataTextField = "YEAR";
+            ddlRatingClassYear.DataBind();
+
+            ddlCityTownYear.DataSource = dsYears;
+            ddlCityTownYear.DataTextField = "YEAR";
+            ddlCityTownYear.DataBind();
 
             // Create City/Town drop down list from database table
             DataSet dsCities = null;
