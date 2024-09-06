@@ -35,7 +35,23 @@
                 <h2 class="header-title mb-1">Mugshot Search</h2>
                 <h6 class="header-title mb-5">Individuals booked within the last 3 days</h6>
             </div>
-            <form runat="server">
+            <!-- Message -->
+            <div class="message mt-5">
+                <h4>MESSAGE</h4>
+                <p>
+                    This search is currently offline. 
+                </p>
+                <p>
+                    Media requests may be submitted using our <a href="https://pinalcountyazso.govqa.us/WEBAPP/_rs/(S(g1qvleth55mman140mj33g0g))/RequestLogin.aspx" target="_blank">Records Request Portal</a>.
+                </p>
+                <p>
+                    Public inquiries regarding inmates may call the Jail Inmate Information number at (855)355-0358.
+                </p>
+            </div>
+
+
+
+            <%--<form runat="server">
                 <!-- start of form search by INMATE code -->
                 <div justify-content-center">
                     <div class="row">
@@ -52,10 +68,10 @@
                                     </asp:TemplateField>
                                     <asp:BoundField HeaderText="BOOKING NUMBER" DataField="BOOKINGNO" />
                                     <asp:BoundField HeaderText="FIRST NAME" DataField="FIRSTNAME" />
-                                    <asp:BoundField HeaderText="LAST NAME" DataField="LASTNAME" />
-                                    <%--<asp:BoundField HeaderText="AGE" DataField="AGE" />
-                                    <asp:BoundField HeaderText="DESCRIPTION" DataField="STATUTEDESC" />--%>
-                                    <asp:BoundField HeaderText="BOOKING DATE" DataField="BOOKINGDATE" />
+                                    <asp:BoundField HeaderText="LAST NAME" DataField="LASTNAME" />--%>
+                                    <!-- <asp:BoundField HeaderText="AGE" DataField="AGE" />
+                                    <asp:BoundField HeaderText="DESCRIPTION" DataField="STATUTEDESC" /> -->
+                                    <%--<asp:BoundField HeaderText="BOOKING DATE" DataField="BOOKINGDATE" />
                                 </Columns>
                                 <HeaderStyle CssClass="grid-header" />
                                 <PagerStyle CssClass="grid-pager" />
@@ -74,11 +90,11 @@
                         </div>
                     </div>
                 </div>
-            </form>
+            </form>--%>
         </div>
     </div>
 
-    <script type="text/javascript">
+    <%--<script type="text/javascript">
         function Search_Gridview(strKey) {
             var strData = strKey.value.toLowerCase().split(" ");
             var Grid="<%=gvInmates.ClientID%>";
@@ -98,7 +114,7 @@
                 tblData.rows[i].style.display = styleDisplay;
             }
         }
-    </script>
+    </script>--%>
 
     <!-- jQuery first, then Tether, then Bootstrap JS. -->
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>

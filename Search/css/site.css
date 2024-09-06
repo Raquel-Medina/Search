@@ -125,6 +125,23 @@ hr.header-title {
 /* ======================================================== */
 
 
+/* || Message Styles */
+.message {
+    background-color: #eaecee;
+    border-color: #fff8e1;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 20px;
+}
+
+    .message p {
+        font-weight: normal;
+    }
+/* ======================================================== */
+
+
 /* || BUTTON Styles */
 .button-primary {
     background-color: #2f4a58;

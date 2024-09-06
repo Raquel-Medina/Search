@@ -34,7 +34,20 @@
                 <hr class="header-title" />
                 <h2 class="header-title mb-5">Inmate Search</h2>
             </div>
-            <form runat="server">
+            <!-- Message -->
+            <div class="message mt-5">
+                <h4>MESSAGE</h4>
+                <p>
+                    This search is currently offline. 
+                </p>
+                <p>
+                    Media requests may be submitted using our <a href="https://pinalcountyazso.govqa.us/WEBAPP/_rs/(S(g1qvleth55mman140mj33g0g))/RequestLogin.aspx" target="_blank">Records Request Portal</a>.
+                </p>
+                <p>
+                    Public inquiries regarding inmates may call the Jail Inmate Information number at (855)355-0358.
+                </p>
+            </div>
+            <%--<form runat="server">
                 <h5 class="header-title">INMATE</h5>
                 <div class="row">
                     <div class="col-lg-3 col-sm-12 align-self-center pb-2">
@@ -67,7 +80,7 @@
                         </asp:GridView>
                     </div>
                 </div>
-            </form>
+            </form>--%>
         </div>
     </div>
 

@@ -7,27 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Search {
-    
-    
-    public partial class Mugshot_Search {
-        
-        /// <summary>
-        /// txtSearch control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSearch;
-        
-        /// <summary>
-        /// gvInmates control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvInmates;
+namespace Search
+{
+
+
+    public partial class Mugshot_Search
+    {
     }
 }
