@@ -353,12 +353,6 @@ namespace Search
                         }
                         else lblWidower.Text = "No";
 
-                        if (exemptType.Contains("D-FCV") || exemptType.Contains("D-LPV"))
-                        {
-                            lblDisabled.Text = "Yes";
-                        }
-                        else lblDisabled.Text = "No";
-
                         if (exemptType.Contains("8"))
                         {
                             lblSrFreeze.Text = "Yes";
