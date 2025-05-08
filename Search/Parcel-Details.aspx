@@ -212,6 +212,12 @@
                                     </div>
                                     <div><asp:Label ID="lblPropAddress" runat="server" /></div>
                                 </div>
+                                <div class="col">
+                                    <div class="details-title">
+                                        PARCEL ALERT LIST
+                                    </div>
+                                    <div><asp:Label ID="lblParcelAlertList" runat="server" /></div>
+                                </div>
                             </div>
                             <hr />
                             <div class="row mb-4">

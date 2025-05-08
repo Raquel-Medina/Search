@@ -122,6 +122,7 @@ namespace Search
                         string cabinet = drDetails["cabinet"].ToString();
                         string slide = drDetails["slide"].ToString();
                         string recDate = drDetails["dkt_month"].ToString() + "/" + drDetails["dkt_day"].ToString() + "/" + drDetails["dkt_year"].ToString();
+                        string pal = drDetails["ownershiptype"].ToString();
                         decimal saleAmount = decimal.Parse(drDetails["docket_prc"].ToString());
 
                         hlAddressLocation.NavigateUrl = "https://www.google.com/maps?q=" + propAddress;
@@ -158,6 +159,12 @@ namespace Search
                         else { lblPropAddress.Text = ""; }
 
                         ttPropAddress.Title = "Property Address refers to a geographical location: it may not match the mailing address city or zip code.";
+
+                        if (pal.Contains("** PAL - PARCEL LOCK ACTIVE ** DO NOT EDIT"))
+                        {
+                            lblParcelAlertList.Text = "YES";
+                        }
+                        else { lblParcelAlertList.Text = "NO"; }
 
                         if (sub != "")
                         {
