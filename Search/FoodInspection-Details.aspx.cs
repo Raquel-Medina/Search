@@ -43,17 +43,31 @@ namespace Search
 
                 while (dr.Read())
                 {
-                    string startTime = Convert.ToDateTime(dr["StartTime"].ToString()).ToString("h:mm tt");
-                    string endTime = Convert.ToDateTime(dr["EndTime"].ToString()).ToString("h:mm tt");
+                    string st = dr["StartTime"].ToString();
+                    string et = dr["EndTime"].ToString();
+                    string startTime;
+                    string endTime;
                     string pn = dr["ApplicantPhone"].ToString();
                     string phone;
                     string tempObservations = dr["guide_item_comment"].ToString();
+
+                    if (st != "")
+                    {
+                        startTime = DateTime.Parse(st).ToString("h:mm tt");
+                    }
+                    else startTime = "";
+
+                    if (et != "")
+                    {
+                        endTime = DateTime.Parse(et).ToString("h:mm tt");
+                    }
+                    else endTime = "";
 
                     if (pn != "")
                     {
                         phone = "(" + pn.Substring(0, 3) + ") " + pn.Substring(3, 3) + "-" + pn.Substring(6, 4);
                     }
-                    else phone = "0";
+                    else phone = "";
 
                     // Top portion of form
                     lblRating.Text = dr["guide_item_status"].ToString();
