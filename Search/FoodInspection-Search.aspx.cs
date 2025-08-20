@@ -1,14 +1,15 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Windows;
-using System.Configuration;
-using System.Data;
-using System.Data.SqlClient;
 
 namespace Search
 {
@@ -353,21 +354,23 @@ namespace Search
             ddlCityTownYear.DataBind();
 
             // Create City/Town drop down list from database table
-            DataSet dsCities = null;
+            string query = "SELECT DISTINCT PropertyAddressCity FROM [EnvHealth].[dbo].[NewInspData] ORDER BY PropertyAddressCity";
 
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 con.Open();
-                SqlDataAdapter adapter = new SqlDataAdapter("SELECT DISTINCT PropertyAddressCity FROM [EnvHealth].[dbo].[NewInspData]", con);
+                SqlCommand cmd = new SqlCommand(query, con);
+                SqlDataReader reader = cmd.ExecuteReader();
 
-                dsCities = new DataSet();
-
-                adapter.Fill(dsCities);
+                while (reader.Read())
+                {
+                    if (!reader.IsDBNull(reader.GetOrdinal("PropertyAddressCity")))
+                    {
+                        string cityTown = reader["PropertyAddressCity"].ToString().ToUpper();
+                        ddlCityTown.Items.Add(new ListItem(cityTown, cityTown));
+                    }
+                }
             }
-
-            ddlCityTown.DataSource = dsCities;
-            ddlCityTown.DataTextField = "PropertyAddressCity";
-            ddlCityTown.DataBind();
         }
 
         private void ClearEstName()
