@@ -15,6 +15,7 @@ namespace Search
 {
     public partial class Parcel_Details : System.Web.UI.Page
     {
+        string isRedacted;
         // *** Connection Strings *** //
         string connectionString = ConfigurationManager.ConnectionStrings["AssessorConnectionString"].ConnectionString;
         protected void Page_Load(object sender, EventArgs e)
@@ -67,7 +68,10 @@ namespace Search
                 }
 
                 GetDetails(parcelID, book, map, parcel, split, taxYear);
-                GetDocuments(parcelID, book, map, parcel, split);
+                if (isRedacted != "Redacted")
+                {
+                    GetDocuments(parcelID, book, map, parcel, split);
+                }
                 GetExemptions(parcelID, book, map, parcel, split, taxYear);
                 GetImprovements(parcelID, book, map, parcel, split, taxYear);
             }
@@ -114,6 +118,7 @@ namespace Search
                         string propAddress = drDetails["p_stnm"].ToString() + " " + drDetails["p_dir"] + " " + drDetails["p_stna"] + " " + drDetails["p_sfx"] + " " + drDetails["p_city"].ToString() + ", " + drDetails["p_stat"].ToString() + " " + drDetails["p_zipc"].ToString();
                         string owner2 = drDetails["owner_na2"].ToString();
                         string careOf = drDetails["care_of"].ToString();
+
                         string sub = drDetails["sub_div"].ToString();
                         string unit = drDetails["unit"].ToString();
                         string block = drDetails["BLOCK"].ToString();
@@ -121,9 +126,11 @@ namespace Search
                         string phase = drDetails["phase"].ToString();
                         string cabinet = drDetails["cabinet"].ToString();
                         string slide = drDetails["slide"].ToString();
+
                         string recDate = drDetails["dkt_month"].ToString() + "/" + drDetails["dkt_day"].ToString() + "/" + drDetails["dkt_year"].ToString();
                         string pal = drDetails["ownershiptype"].ToString();
                         decimal saleAmount = decimal.Parse(drDetails["docket_prc"].ToString());
+                        isRedacted = drDetails["RedactionStatus"].ToString();
 
                         hlAddressLocation.NavigateUrl = "https://www.google.com/maps?q=" + propAddress;
 
